@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Menu
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink="componente1">Componente 1</a>
+        <a class="dropdown-item" routerLink="componente2">Componente 2</a>
+        <a class="dropdown-item" routerLink="usuarios/lista">Usuarios</a>
+        <a class="dropdown-item" routerLink="usuarios/register">Registrar</a>
+        <a class="dropdown-item" routerLink="usuarios/singin">Ingresar</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>
