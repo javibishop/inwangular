@@ -17,6 +17,6 @@ export class UsuarioService {
       })
     };
     
-    return this.httpClient.get('http://localhost:3000/usuarios', httpOptions);
+    return this.httpClient.get('http://localhost:3000/usuarios');
   }
 }

@@ -6,12 +6,17 @@ import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './rutas';
 import { Componente1Component } from './componente1/componente1.component';
 import { Componente2Component } from './componente2/componente2.component';
+import { RandomComponent } from './random/random.component';
+import { TestProvidersComponent } from './test-providers/test-providers.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     Componente1Component,
-    Componente2Component
+    Componente2Component,
+    TestProvidersComponent,
+    RandomComponent
   ],
   imports: [
     BrowserModule,
@@ -29,5 +34,4 @@ export class AppModule {
   constructor(){
     console.log('modulo principal');
   }
-  
  }
