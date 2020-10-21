@@ -12,7 +12,6 @@ export class Componente1Component implements OnInit {
 
   ngOnInit() {
     this.usuarioService.getUsers().subscribe( (r: any) => this.usuarioService.addUser(r.nombre, r.apellido));
-
     this.usuarioService.addUser('papa', 'blanca');
   }
 

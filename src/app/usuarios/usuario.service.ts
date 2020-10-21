@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+// @Injectable({
+//   providedIn: 'root'
+//   //providedIn: UsuariosModule
+// })
 export class UsuarioService {
   usuarios = [];
   constructor(private httpClient: HttpClient) {}
