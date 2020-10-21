@@ -18,7 +18,7 @@ import { Componente2Component } from './componente2/componente2.component';
     AppRoutingModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB9NKtbEfyh8g8icUvJnx7RFZR6TQADKSY',
+      apiKey: '',
       libraries: ['places']
     })
   ],
