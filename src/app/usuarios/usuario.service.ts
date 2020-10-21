@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsuarioService {
-
+  usuarios = [];
   constructor(private httpClient: HttpClient) {}
 
   getUsers() {
@@ -19,4 +19,9 @@ export class UsuarioService {
     
     return this.httpClient.get('http://localhost:3000/usuarios');
   }
+  addUser(usuario, apellido){
+    this.usuarios.push({usuario, apellido});
+    console.log(this.usuarios.length);
+  }
+
 }
