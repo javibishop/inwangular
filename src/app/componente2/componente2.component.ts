@@ -1,6 +1,7 @@
 /// <reference types="@types/googlemaps" />
 import { MapTypeStyle } from '@agm/core';
 import { Component, OnInit, ViewChild, Input, ElementRef } from '@angular/core';
+import { UsuarioService } from '../usuarios/usuario.service';
 declare let google: any;
 
 @Component({
@@ -316,11 +317,13 @@ export class Componente2Component implements OnInit {
       },
     ],
   };
-  constructor() {}
+  constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit() {
       this.setCurrentLocation();
       this.setData();
+
+      this.usuarioService.addUser('paula', 'veli');
   }
 
   private setCurrentLocation() {
