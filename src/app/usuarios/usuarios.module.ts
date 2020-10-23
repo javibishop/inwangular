@@ -6,7 +6,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { ListaComponent } from "./lista/lista.component";
 import { RandomComponent } from '../random/random.component';
 import { RandomService } from '../service/random.service';
-import { UsuarioService } from "./usuario.service";
+// import { UsuarioService } from "./usuario.service";
 
 // rutas del modulo de usuarios.
 const routes: Routes = [

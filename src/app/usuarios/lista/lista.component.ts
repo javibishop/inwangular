@@ -4,8 +4,8 @@ import { UsuarioService } from '../usuario.service';
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.css'],
-  providers: [UsuarioService],
+  styleUrls: ['./lista.component.css']
+  //providers: [UsuarioService],
 })
 export class ListaComponent implements OnInit {
   usuarios: any;

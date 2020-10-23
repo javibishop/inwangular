@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UsuariosModule } from './usuarios.module';
 @Injectable()
 // @Injectable({
-//   providedIn: 'root'
-//   //providedIn: UsuariosModule
+//   //providedIn: 'root'
+//   providedIn: UsuariosModule
 // })
 export class UsuarioService {
   usuarios = [];

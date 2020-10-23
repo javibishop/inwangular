@@ -22,3 +22,15 @@ https://console.firebase.google.com/project/simuladorescti1/overview?hl=es
 
 Inyeccion Dependencias en servicios
 	https://angular.io/guide/providers
+
+
+Casos services y providers
+     En los servicios, para q sea inyectable, tiene que tener el @Injectable. Ver que otro tag hace q algo sea inyectable.
+     Si en un servicio NO se pone el providedIn: 'root', hay que poner en el modulo el servicio en la parte de providers. providers: [UsuarioService]
+     Si en un servicio SI se pone el providedIn: 'root', no hace falta poner en el modulo el servicio en la parte de providers.
+          En los dos casos anteriores, si es 'root' o va en el modulo principal en providers, se puede inyectar en toda la app.
+          En estos dos puntos anteriores, se crea un singleton y se inyecta en donde se necesite, pero es una sola instancia.
+     Si se dan uno de los dos casos anteriores, y ademas, en un componente le agrego  providers: [UsuarioService], en ese componente
+     me crea una instancia nueva del servicio. 
+
+     Queda ver el tema de poner los servicios por modulos!.
