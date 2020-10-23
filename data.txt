@@ -19,6 +19,7 @@ como hacer la config del proyecto firebase
 https://codigofacilito.com/articulos/deploy-angular-firebase
 
 https://console.firebase.google.com/project/simuladorescti1/overview?hl=es
+https://console.firebase.google.com/project/simuladorescti1/database/simuladorescti1/data?hl=es
 
 Inyeccion Dependencias en servicios
 	https://angular.io/guide/providers
@@ -34,3 +35,19 @@ Casos services y providers
      me crea una instancia nueva del servicio. 
 
      Queda ver el tema de poner los servicios por modulos!.
+
+Canal youtube firebase: https://www.youtube.com/watch?v=WacqhiI-g_o
+
+Change detection
+https://dzone.com/articles/how-to-use-change-detection-in-angular
+https://medium.com/@roliver_javier/angular-changedetector-894fd7e4dd6e
+
+Dependencias inyeccioin
+https://medium.com/@tomastrajan/total-guide-to-angular-6-dependency-injection-providedin-vs-providers-85b7a347b59f
+https://medium.com/@andrejsabrickis/locate-circular-dependencies-in-typescript-modules-2b1eb03dbf2e
+
+
+Crud firebase  
+https://blog.nubecolectiva.com/como-integrar-firebase-y-angular-7-listado-de-datos-desde-firebase-parte-3-final/
+https://medium.com/@ahsanalisiddique878/angular-10-crud-with-firebase-realtime-database-6ad8ba9eb5f5
+

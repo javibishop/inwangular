@@ -1,1 +1,11 @@
 <p>{{ randomService.random }}</p>
+
+<input type="button" (click)="adduser()">
+
+  <table>
+    <tr  *ngFor="let line of students" my-tr>
+        {{line.firstName}}
+        {{line.lastName}}
+    </tr>
+  </table>
+
