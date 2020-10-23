@@ -5,7 +5,7 @@ import { RandomService } from '../service/random.service';
   selector: 'app-random',
   templateUrl: './random.component.html',
   styleUrls: ['./random.component.css'],
-  providers: [RandomService]
+  // providers: [RandomService]
 })
 export class RandomComponent implements OnInit {
 

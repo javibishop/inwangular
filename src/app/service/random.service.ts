@@ -2,7 +2,7 @@ import { Component, Injectable } from '@angular/core';
 import { TestProvidersModule } from '../test-providers/test-providers.module';
 
 @Injectable({
-  providedIn: TestProvidersModule,
+  providedIn: 'root',
 })
 export class RandomService {
   random: string;

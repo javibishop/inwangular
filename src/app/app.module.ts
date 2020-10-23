@@ -8,6 +8,10 @@ import { Componente1Component } from './componente1/componente1.component';
 import { Componente2Component } from './componente2/componente2.component';
 import { RandomComponent } from './random/random.component';
 import { TestProvidersComponent } from './test-providers/test-providers.component';
+import { RandomService } from './service/random.service';
+import { ComponenteCiclo1Component } from './componente-ciclo1/componente-ciclo1.component';
+import { ComponenteCiclo2Component } from './componente-ciclo2/componente-ciclo2.component';
+import { TestChangeDetectorComponent } from './test-change-detector/test-change-detector.component';
 
 
 @NgModule({
@@ -16,7 +20,10 @@ import { TestProvidersComponent } from './test-providers/test-providers.componen
     Componente1Component,
     Componente2Component,
     TestProvidersComponent,
-    RandomComponent
+    RandomComponent,
+    ComponenteCiclo1Component,
+    ComponenteCiclo2Component,
+    TestChangeDetectorComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,7 @@ import { TestProvidersComponent } from './test-providers/test-providers.componen
       libraries: ['places']
     })
   ],
-  providers: [],
+  providers: [RandomService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
