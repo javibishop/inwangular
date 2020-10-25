@@ -1,4 +1,5 @@
 name: Build and Deploy
+
 on:
   push:
     branches:
@@ -6,17 +7,15 @@ on:
 
 jobs:
   firebase-deploy:
-    name: Build
+    
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
+    
+	steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
           node-version: '10.x'
-      - name: Install Dependencies
         run: npm install
-      - name: Build
         run: npm run build-prod
       - uses: w9jds/firebase-action@master
         with:
