@@ -2,6 +2,7 @@ simuladorescti
 angular2020
 
 
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="/__/firebase/7.24.0/firebase-app.js"></script>
 
@@ -51,3 +52,5 @@ Crud firebase
 https://blog.nubecolectiva.com/como-integrar-firebase-y-angular-7-listado-de-datos-desde-firebase-parte-3-final/
 https://medium.com/@ahsanalisiddique878/angular-10-crud-with-firebase-realtime-database-6ad8ba9eb5f5
 
+https://fireship.io/snippets/github-actions-deploy-angular-to-firebase-hosting/
+https://www.youtube.com/watch?v=ohslXhhNdOM
