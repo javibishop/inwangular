@@ -35,9 +35,11 @@ Casos services y providers
      Si se dan uno de los dos casos anteriores, y ademas, en un componente le agrego  providers: [UsuarioService], en ese componente
      me crea una instancia nueva del servicio. 
 
-     Queda ver el tema de poner los servicios por modulos!.
+     Queda ver el tema de poner los servicios por modulos!. Si los servicios se ponen en lazy module, son instancias nuevas, y las genera el
+     provider mas cercando, que genera singleton es el principal.Despues hay otras tecnicas para generaro solo devolver una instancia. pero
+     es mas fumeta de seba.
      Si a un servicio no lo marco como inyectable, con el @Injectable, puedo ponerlo en un constructor como : 
-
+     Otra cosa es usar InjectionToken para casos para inyectar configuracion por ejemplo. C:\SCS\Google\inwangular\src\app\config.ts
 Canal youtube firebase: https://www.youtube.com/watch?v=WacqhiI-g_o
 
 Change detection
