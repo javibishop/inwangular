@@ -36,6 +36,7 @@ Casos services y providers
      me crea una instancia nueva del servicio. 
 
      Queda ver el tema de poner los servicios por modulos!.
+     Si a un servicio no lo marco como inyectable, con el @Injectable, puedo ponerlo en un constructor como : 
 
 Canal youtube firebase: https://www.youtube.com/watch?v=WacqhiI-g_o
 
@@ -54,3 +55,16 @@ https://medium.com/@ahsanalisiddique878/angular-10-crud-with-firebase-realtime-d
 
 https://fireship.io/snippets/github-actions-deploy-angular-to-firebase-hosting/
 https://www.youtube.com/watch?v=ohslXhhNdOM
+
+Para mapa con angular 6:
+     npm i  @agm/core@1.0.0
+     npm i -D @types/googlemaps@3.38.0 
+     npm i @types/google-maps –save
+
+     En tsconfig
+          "types": [
+          "googlemaps"
+     ],
+
+     En el componente, 1er linea /// <reference types="@types/googlemaps" />
+     declare let google: any;

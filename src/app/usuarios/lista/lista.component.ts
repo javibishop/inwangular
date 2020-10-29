@@ -23,3 +23,6 @@ export class ListaComponent implements OnInit {
   }
 
 }
+
+// implementar llamadas con forkjoin y mergemap.
+// https://miro.medium.com/max/875/1*tPjpQwJ4qcB1E0FSGqpivw.png
