@@ -9,6 +9,6 @@ import { RandomComponent } from '../random/random.component';
 })
 export class TestProvidersModule {
   constructor() {
-    console.log("modulo usuarios");
+    console.log("modulo usuarios adsfsdfsdf");
   }
 }

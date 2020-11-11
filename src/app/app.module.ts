@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
@@ -8,15 +8,15 @@ import { Componente1Component } from './componente1/componente1.component';
 import { Componente2Component } from './componente2/componente2.component';
 import { RandomComponent } from './random/random.component';
 import { TestProvidersComponent } from './test-providers/test-providers.component';
-<<<<<<< HEAD
 import { RandomService } from './service/random.service';
 import { ComponenteCiclo1Component } from './componente-ciclo1/componente-ciclo1.component';
 import { ComponenteCiclo2Component } from './componente-ciclo2/componente-ciclo2.component';
 import { TestChangeDetectorComponent } from './test-change-detector/test-change-detector.component';
-=======
-import { UsuarioService } from './usuarios/usuario.service';
->>>>>>> fa71984c2dbad3fd4c41f6d0d38fe1de61085c74
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { CONFIG_TOKEN, configDataServiceFactory, CONFIG_TOKEN2 } from './config';
 
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,22 +27,24 @@ import { UsuarioService } from './usuarios/usuario.service';
     RandomComponent,
     ComponenteCiclo1Component,
     ComponenteCiclo2Component,
-    TestChangeDetectorComponent
+    TestChangeDetectorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
     AgmCoreModule.forRoot({
-      apiKey: '',
+      apiKey: 'AIzaSyB9NKtbEfyh8g8icUvJnx7RFZR6TQADKSY',
       libraries: ['places']
     })
   ],
-<<<<<<< HEAD
-  providers: [RandomService],
-=======
-  providers: [UsuarioService],
->>>>>>> fa71984c2dbad3fd4c41f6d0d38fe1de61085c74
+  providers: [
+    CONFIG_TOKEN2,
+    {provide: CONFIG_TOKEN, useFactory: configDataServiceFactory}
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

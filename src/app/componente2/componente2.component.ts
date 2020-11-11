@@ -16,12 +16,15 @@ export class Componente2Component implements OnInit {
   title = 'Mapa de distribucion';
   lat = -34.9210273;
   lng = -57.9538458;
-  zoom = 15;
+  zoom = 14;
   coordinates = new google.maps.LatLng(this.lat, this.lng);
+  
   mapOptions: google.maps.MapOptions = {
     center: this.coordinates,
     zoom: this.zoom
   };
+
+
   markerOrigin : google.maps.Marker;
   markers = [];
   R = 6371.8;
