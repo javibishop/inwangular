@@ -21,10 +21,6 @@ namespace WebAPITest.Controllers
     public UserController(UserService userServices)
     {
       this._userService = userServices;
-      Usuario user = new Usuario { BookName = "test23", Author = "core", Category = "zasa", Price = 23 };
-
-      this._userService.Create(user);
-
     }
 
 
@@ -46,28 +42,17 @@ namespace WebAPITest.Controllers
     [HttpPost]
     public IActionResult Post([FromBody] Usuario value)
     {
-      if (!ModelState.IsValid)
-      {
-        return StatusCode(StatusCodes.Status406NotAcceptable);
-      }
       Usuario newUser = _userService.Create(value);
       return Ok(newUser);
     }
 
     // PUT: api/User/5
     [HttpPut("{id}")]
-    public IActionResult Put(string id, [FromBody] Usuario value)
+    public void Put(string id, [FromBody] Usuario value)
     {
-      try
-      {
-        _userService.Update(id, value);
-        throw new Exception("ROMPI");
-      }
-      catch (Exception) {
-        return StatusCode(StatusCodes.Status404NotFound);
-        throw;
-      }
-     }
+      _userService.Update(id, value);
+    }
+     
 
     // DELETE: api/ApiWithActions/5
     [HttpDelete("{id}")]

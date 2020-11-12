@@ -20,10 +20,10 @@ namespace WebAPITest.Services
     }
 
     public List<Usuario> Get() =>
-        _user.Find(book => true).ToList();
+        _user.Find(usuario => true).ToList();
 
     public Usuario Get(string id) =>
-        _user.Find<Usuario>(book => book.Id == id).FirstOrDefault();
+        _user.Find<Usuario>(usario => usario.Id == id).FirstOrDefault();
 
     public Usuario Create(Usuario usuario)
     {
@@ -35,9 +35,9 @@ namespace WebAPITest.Services
         _user.ReplaceOne(user => user.Id == id, userIn);
 
     public void Remove(Usuario userIn) =>
-        _user.DeleteOne(book => book.Id == userIn.Id);
+        _user.DeleteOne(usuario => usuario.Id == userIn.Id);
 
     public void Remove(string id) =>
-        _user.DeleteOne(book => book.Id == id);
+        _user.DeleteOne(usuario => usuario.Id == id);
   }
 }

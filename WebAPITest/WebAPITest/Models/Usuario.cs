@@ -1,5 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebAPITest.Models
@@ -11,14 +13,21 @@ namespace WebAPITest.Models
     public string Id { get; set; }
 
     [BsonElement("Name")]
-    public string BookName { get; set; }
+    public string Nombre { get; set; }
 
-    [Required]
-    public decimal Price { get; set; }
+    public string Apellido { get; set; }
 
-    [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
-    public string Category { get; set; }
+    public int Edad { get; set; }
 
-    public string Author { get; set; }
+    public string CodRecurso { get; set; }
+
+    public string Cargo { get; set; }
+
+    public string nombreUsuario { get; set; }
+
+    public string password { get; set; }
+
+    public IEnumerable<ConocimientoUsuario> Conocimientos { get; set; }
+    
   }
 }
