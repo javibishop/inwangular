@@ -37,3 +37,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#web api
+/WebAPITest/WebAPITest/bin
+/WebAPITest/WebAPITest/obj
