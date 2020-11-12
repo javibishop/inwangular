@@ -96,6 +96,6 @@ C:\SCS\RepoAngular\inwangular\WebAPITest\WebAPITest\bin\Debug\netcoreapp3.1\ru\M
 C:\SCS\RepoAngular\inwangular\WebAPITest\WebAPITest\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\SCS\RepoAngular\inwangular\WebAPITest\WebAPITest\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\SCS\RepoAngular\inwangular\WebAPITest\WebAPITest\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\SCS\RepoAngular\inwangular\WebAPITest\WebAPITest\obj\Debug\netcoreapp3.1\WebAPITest.MvcApplicationPartsAssemblyInfo.cache
 C:\SCS\RepoAngular\inwangular\WebAPITest\WebAPITest\obj\Debug\netcoreapp3.1\WebAPITest.dll
 C:\SCS\RepoAngular\inwangular\WebAPITest\WebAPITest\obj\Debug\netcoreapp3.1\WebAPITest.pdb
+C:\SCS\RepoAngular\inwangular\WebAPITest\WebAPITest\obj\Debug\netcoreapp3.1\WebAPITest.MvcApplicationPartsAssemblyInfo.cache
