@@ -39,5 +39,7 @@ testem.log
 Thumbs.db
 
 #web api
-/WebAPITest/WebAPITest/bin
-/WebAPITest/WebAPITest/obj
+/WebAPITest/WebAPITest/bin/*
+/WebAPITest/WebAPITest/obj/*
+/WebAPITest/WebAPITest/.vs/*
+WebAPITest/.vs/*
