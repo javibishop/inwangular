@@ -1,0 +1,102 @@
+.inside {
+  @include breakpoint('large') {
+    background: #fff;
+    margin: 40px 0 0;
+    position: relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    //overflow: hidden;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  &__title {
+    color: var(--title);
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 34px;
+
+    @include breakpoint('medium') {
+      font-size: 30px;
+      line-height: 36px;
+      max-width: 80%;
+    }
+
+    @include breakpoint('large') {
+      grid-area: title;
+      max-width: 100%;
+    }
+  }
+
+  &__description {
+    color: var(--description);
+    font-family: var(--secondary-font);
+    font-size: 13px;
+    line-height: 17px;
+    max-width: 60%;
+    padding: 20px 0;
+
+    @include breakpoint('medium') {
+      padding: 25px 0 35px;
+    }
+
+    @include breakpoint('large') {
+      grid-area: description;
+      padding: 5px 0 0;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
+  &__toggle {
+    @include breakpoint('large') {
+      grid-area: toggle;
+      margin-left: auto;
+      padding: 5px 0 0;
+    }
+  }
+
+  &__header {
+    @include breakpoint('large') {
+      display: grid;
+      grid-template-areas: "title toggle" "description toggle";
+      padding: 0 0 20px;
+    }
+  }
+
+  &__wrapper {
+    padding: 140px 0 60px;
+
+    @include breakpoint('medium') {
+      width: calc(100% - 285px);
+      padding: 60px 0;
+    }
+
+    @include breakpoint('large') {
+      width: calc(100% - 450px);
+      padding: 60px;
+      position: relative;
+    }
+
+    &:before {
+      background: #F9F9FB;
+      content: '';
+      display: none;
+      height: calc(100% - 50px);
+      position: absolute;
+      right: 0;
+      top: 50px;
+      width: 4px;
+
+      @include breakpoint('large') {
+        display: block;
+      }
+    }
+  }
+}
+
+.home {
+  @include breakpoint('large') {
+    overflow-x: hidden;
+  }
+}

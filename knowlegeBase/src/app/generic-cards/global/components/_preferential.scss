@@ -1,0 +1,177 @@
+.preferential {
+  padding: 0 0 60px;
+
+  @include breakpoint('large') {
+    padding: 10px 0 0;
+  }
+
+  &__add {
+    &__link {
+      font-family: var(--secondary-font);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--location-add);
+      cursor: pointer;
+
+      &:before {
+        color: var(--location-add);
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__create {
+    &__title {
+      font-family: var(--secondary-font);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--location-add);
+    }
+
+    &__description {
+      padding: 30px 0 0;
+      font-family: var(--secondary-font);
+      font-size: 13px;
+      line-height: 17px;
+      font-weight: 100;
+      color: var(--preferential-text);
+
+      @include breakpoint('medium') {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+
+    &__inputs {
+      @include breakpoint('medium') {
+        display: flex;
+      }
+    }
+
+    .sep {
+      padding: 45px 0 0;
+
+      @include breakpoint('large') {
+        padding: 45px 45px 0 0;
+        width: 220px;
+      }
+
+      &__input {
+        &__text {
+          font-size: 20px;
+          line-height: 20px;
+  
+          @include breakpoint('medium') {
+            font-size: 18px;
+            line-height: 18px;
+          }
+  
+          @include breakpoint('large') {
+            line-height: 18px;
+            padding: 0 0 10px;
+          }
+        }
+      }
+    } 
+
+    &__btns {
+      padding: 30px 0 40px;
+      border-bottom: 1px solid var(--preferential-text-border);
+      display: flex;
+      justify-content: space-between;
+
+      @include breakpoint('medium') {
+        justify-content: flex-start;
+        border-bottom: 0 none;
+        padding: 30px 0 0;
+      }
+
+      &__link {
+        align-items: center;
+        border-radius: 30px;
+        border: 1px solid var(--title);
+        color: var(--title);
+        display: inline-flex;
+        font-family: var(--secondary-font);
+        font-size: 10px;
+        font-weight: 500;
+        height: 32px;
+        justify-content: center;
+        letter-spacing: 2px;
+        min-width: 110px;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        @include breakpoint('medium') {
+          margin: 0 35px 0 0;
+        }
+
+        @include breakpoint('large') {
+          transition: all 0.3s ease-in-out;
+          margin: 0 25px 0 0;
+        }
+
+        &:hover {
+          @include breakpoint('large') {
+            background-color: var(--title);
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  &__added {
+    &__title {
+      font-family: var(--secondary-font);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--location-add);
+    }
+
+    &__box {
+      padding: 30px 0 0;
+      display: flex;
+      justify-content: space-between;
+
+      &__text {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 24px;
+        color: var(--preferential-text);
+
+        @include breakpoint('large') {
+          font-size: 18px;
+        }
+      }
+
+      &__icons {
+        a {
+          align-items: center;
+          display: inline-flex;
+          height: 25px;
+          justify-content: center;
+          width: 25px;
+
+          &:before {
+            font-size: 18px;
+
+            @include breakpoint('large') {
+              font-size: 20px;
+            }
+          }
+
+          @include breakpoint('large') {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}

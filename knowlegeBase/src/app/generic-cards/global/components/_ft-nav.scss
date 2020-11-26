@@ -1,0 +1,114 @@
+@import '../../global/mixin';
+
+.ft-nav {
+  @include breakpoint('medium') {
+    align-items: center;
+    background: white;
+    bottom: 0;
+    box-shadow: 10px 0 15px 6px #ddd4;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 70px;
+    justify-content: flex-end;
+    left: 0;
+    padding: 0 25px;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+
+    @include breakpoint('large') {
+      padding: 0 40px;
+      left: 70px;
+      width: calc(100% - 140px);
+    }
+  }
+
+  &__links {
+    border-radius: 50px;
+    border: 1.5px solid var(--btn);
+    color: var(--btn);
+    display: flex;
+    font-family: var(--secondary-font);
+    font-size: 10px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 2px;
+    margin: 0 0 20px;
+    pointer-events: none;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include breakpoint('medium') {
+      border-radius: 0;
+      border: 0 none;
+      height: auto;
+      line-height: 10px;
+      margin: 0 35px 0 0;
+    }
+
+    &:first-child {
+      flex-direction: row-reverse;
+    }
+
+    &:last-child {
+      @include breakpoint('medium') {
+        margin: 0 35px 0 0;
+      }
+    }
+
+    &:before {
+      display: none;
+
+      @include breakpoint('medium') {
+        color: var(--btn);
+        display: block;
+        margin: 0 7px;
+      }
+    }
+
+    &--active {
+      border-color: var(--btn-active);
+      color: var(--btn-active);
+      pointer-events: inherit;
+
+      &:before {
+        color: var(--btn-active);
+      }
+    }
+  }
+
+  &--last {
+    .ft-nav__links {
+      &:first-child {
+        flex-direction: row;
+      }
+    }
+  }
+
+  &--hogar {
+    @include breakpoint('medium') {
+      z-index: 15;
+    }
+
+    // .ft-nav__links {
+    //   &:nth-child(1) {
+    //     @include breakpoint('medium') {
+    //       margin: 0 0 0 auto;
+    //     }
+    //   }
+    // }
+  }
+
+  &--lasthogar {
+    .ft-nav__links {
+      &:first-child {
+        flex-direction: row;
+
+        @include breakpoint('medium') {
+          margin: 0 auto 0 0;
+        }
+      }
+    }
+  }
+}

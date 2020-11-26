@@ -1,0 +1,52 @@
+//Radio
+.radio {
+  display: flex;
+
+  &__text {
+    color: var(--radio-text);
+    cursor: pointer;
+    display: block;
+    font-family: var(--secondary-font);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    line-height: 12px;
+    padding: 0 25px 0 25px;
+    position: relative;
+    text-transform: uppercase;
+    user-select: none;
+
+    input {
+      cursor: pointer;
+      opacity: 0;
+      position: absolute;
+    }
+
+    &__check {
+      border-radius: 50%;
+      border: 1px solid var(--radio-border);
+      height: 16px;
+      left: 0;
+      position: absolute;
+      top: -2px;
+      width: 16px;
+
+      &:after {
+        background: var(--radio);
+        border-radius: 100%;
+        content: "";
+        display: none;
+        height: 8px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 8px;
+      }
+    }
+  }
+
+  input:checked ~ .radio__text__check:after {
+    display: block;
+  }
+}

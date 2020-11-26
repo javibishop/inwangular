@@ -1,0 +1,85 @@
+.period {
+  &__title {
+    color: var(--title);
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 30px;
+
+    @include breakpoint('large') {
+     font-size: 30px; 
+    }
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+
+    @include breakpoint('medium') {
+      padding: 25px 0 30px;
+    }
+
+    @include breakpoint('large') {
+      justify-content: flex-start;
+      padding: 40px 0 50px;
+    }
+
+    &__links {
+      color: var(--period);
+      cursor: pointer;
+      font-family: var(--secondary-font);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      line-height: 16px;
+      position: relative;
+      text-transform: uppercase;
+
+      @include breakpoint('medium') {
+        letter-spacing: 2px;
+      }
+
+      @include breakpoint('large') {
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 80px;
+        transition: color 0.3s ease-in-out;
+      }
+
+      &:before {
+        background: var(--period-active);
+        bottom: -5px;
+        content: '';
+        display: block;
+        height: 1px;
+        left: -1px;
+        position: absolute;
+        width: 0;
+
+        @include breakpoint('large') {
+          transition: all 0.2s ease-in-out;
+        }
+      }
+
+      &:hover {
+        @include breakpoint('large') {
+          color: var(--period-active);
+        }
+
+        &:before {
+          @include breakpoint('large') {
+            width: 100%;
+          }
+        }
+      }
+
+      &--active {
+        color: var(--period-active);
+
+        &:before {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

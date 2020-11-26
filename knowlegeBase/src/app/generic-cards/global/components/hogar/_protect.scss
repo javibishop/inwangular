@@ -1,0 +1,134 @@
+.home-protect {
+  padding: 70px 30px 60px;
+  background: var(--home-hogar-grey);
+
+  @include breakpoint('medium') {
+    padding: 80px 70px 60px;
+  }
+
+  &__title {
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--home-hogar-title);
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: var(--secondary-font);
+    text-transform: uppercase;
+    padding: 0 0 30px;
+
+    @include breakpoint('medium') {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include breakpoint('large') {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+  &__box {
+    padding: 0 0 60px;
+
+    @include breakpoint('medium') {
+      display: flex;
+    }
+
+    @include breakpoint('large') {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+    
+    &:nth-child(even) {
+      @include breakpoint('medium') {
+        flex-direction: row-reverse;
+      }
+
+      .home-protect__box__data {
+        @include breakpoint('medium') {
+          padding-right: 50px;
+        }
+
+        @include breakpoint('large') {
+          padding-right: 0;
+        }
+      }
+    }
+
+    &:nth-child(odd) {
+      .home-protect__box__data {
+        @include breakpoint('medium') {
+          padding-left: 50px;
+        }
+
+        @include breakpoint('large') {
+          padding-left: 0;
+        }
+      }
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &__data {
+      padding: 40px 0 0;
+
+      @include breakpoint('medium') {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 40%;
+      }
+
+      @include breakpoint('large') {
+        padding: 0 20px 0 30px;
+      }
+
+      &__title {
+        font-weight: 300;
+        font-size: 28px;
+        line-height: 28px;
+        color: #0055A0;
+
+        @include breakpoint('medium') {
+          font-size: 53px;
+          line-height: 60px;
+        }
+
+        @include breakpoint('large') {
+          font-size: 82px;
+        }
+      }
+
+      &__description {
+        padding: 15px 0 0;
+        font-family: var(--secondary-font);
+        font-size: 13px;
+        line-height: 17px;
+        color: var(--home-hogar-description);
+
+        @include breakpoint('medium') {
+          padding: 30px 0 0;
+          font-size: 14px;
+          line-height: 18px;
+        }
+
+        @include breakpoint('large') {
+          padding: 35px 0 0;
+          font-size: 22px;
+          line-height: 26px;
+          font-weight: 100;
+          -webkit-font-smoothing: antialiased;
+        }
+      }
+    }
+
+    &__image {
+      @include breakpoint('medium') {
+        overflow: hidden;
+        width: 60%;
+      }
+    }
+  }
+}

@@ -41,9 +41,7 @@ import { environment } from 'src/environments/environment';
     })
   ],
   providers: [
-    CONFIG_TOKEN2,
     {provide: CONFIG_TOKEN, useFactory: configDataServiceFactory}
-    
   ],
   bootstrap: [AppComponent]
 })

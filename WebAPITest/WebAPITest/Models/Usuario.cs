@@ -26,8 +26,10 @@ namespace WebAPITest.Models
     public string nombreUsuario { get; set; }
 
     public string password { get; set; }
-
+      
     public IEnumerable<ConocimientoUsuario> Conocimientos { get; set; }
-    
+
+    public bool Administrador { get; set; }
+
   }
 }

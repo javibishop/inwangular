@@ -1,0 +1,81 @@
+.sum {
+  padding: 140px 0 5px;
+
+  @include breakpoint('medium') {
+    padding: 80px 0 5px;
+    width: calc(100% - 285px);
+  }
+
+  @include breakpoint('large') {
+    padding: 50px 0 0;
+    width: calc(100% - 450px);
+  }
+
+  &__header {
+    @include breakpoint('large') {
+      display: grid;
+      grid-template-areas: "title toggle" "description toggle";
+      padding: 0 0 20px;
+    }
+  }
+
+  &__title {
+    color: var(--title);
+    font-size: 28px;
+    font-weight: 300;
+
+    @include breakpoint('large') {
+      grid-area: title;
+      font-size: 30px;
+    }
+  }
+
+  &__description {
+    color: var(--description);
+    font-family: var(--secondary-font);
+    font-size: 13px;
+    font-weight: 100;
+    line-height: 17px;
+    padding: 15px 0 0;
+
+    @include breakpoint('medium') {
+      max-width: 90%;
+    }
+
+    @include breakpoint('large') {
+      grid-area: description;
+      max-width: 100%;
+      padding: 5px 0 0;
+      font-size: 14px;
+    }
+  }
+
+  &__toggle {
+    padding: 25px 0;
+
+    @include breakpoint('large') {
+      grid-area: toggle;
+      margin-left: auto;
+      padding: 25px 0 0;
+    }
+  }
+
+  &__wrapper {
+    background: white;
+    margin: 0 0 35px;
+    padding: 20px;
+
+    @include breakpoint('medium') {
+      margin: 0 0 15px;
+      padding: 25px;
+    }
+
+    .sep {
+      padding: 0 0 40px;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<h1>Hi {{currentUser.apellido}}, {{currentUser.nombre}}!</h1>
+
+<div *ngIf="currentUser.administrador">
+    <h3>All registered users:</h3>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Cargo</th>
+                    <th>Recurso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.nombreUsuario }}</td>
+                    <td>{{ user.nombre }}</td>
+                    <td>{{ user.apellido }}</td>
+                    <td>{{ user.edad }}</td>
+                    <td>{{ user.cargo }}</td>
+                    <td>{{ user.codRecurso }}</td>
+                    <td><a (click)="deleteUser(user.id)" class="text-danger">Delete</a></td>
+                    <td><a (click)="verConocimientos(user.id)" class="text-danger">Ver conocimientos</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,2 +1,4 @@
 Tutoril de referencia :
 https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-5.0&tabs=visual-studio
+
+https://medium.com/@adonis.mendoza/habilitando-el-cors-en-asp-net-core-2-1-f8430064648e

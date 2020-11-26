@@ -1,0 +1,161 @@
+.home-planintegral {
+  background: var(--home-hogar-grey);
+  padding: 80px 30px 30px;
+
+  @include breakpoint('medium') {
+    padding: 80px 30px 60px;
+  }
+
+  @include breakpoint('large') {
+    padding: 80px 30px 160px;
+  }
+
+  &__title {
+    padding: 0 0 40px;
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--home-hogar-title);
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: var(--secondary-font);
+    text-transform: uppercase;
+
+    @include breakpoint('medium') {
+      font-size: 16px;
+      line-height: 20px;
+      padding: 0 0 60px;
+    }
+
+    @include breakpoint('large') {
+      font-size: 20px;
+      padding: 0 0 120px;
+    }
+
+    span {
+      display: block;
+
+      @include breakpoint('medium') {
+        display: inline;
+      }
+    }
+  }
+
+  &__content {
+    @include breakpoint('large') {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 70px;
+    }
+  }
+
+  &__box {
+    padding: 0 10px 30px;
+
+    @include breakpoint('medium') {
+      display: flex;
+      flex-direction: row;
+      padding: 0 10px 40px;
+    }
+
+    @include breakpoint('large') {
+      display: block;
+      padding: 0;
+    }
+
+    &:nth-child(odd) {
+      @include breakpoint('medium') {
+        flex-direction: row-reverse;
+      }
+    }
+
+    &__image {
+      display: flex;
+      justify-content: center;
+
+      @include breakpoint('medium') {
+        width: 50%;
+      }
+
+      @include breakpoint('large') {
+        width: 100%;
+      }
+
+      img {
+        max-width: 260px;
+      }
+    }
+
+    &__data {
+      padding: 30px 0 0;
+
+      @include breakpoint('medium') {
+        padding: 0 40px 0 60px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      @include breakpoint('large') {
+        width: 100%;
+        padding: 80px 0 0;
+      }
+    }
+
+    &__title {
+      padding: 0 0 15px;
+      font-weight: 300;
+      font-size: 28px;
+      line-height: 31px;
+      color: #0558A1;
+
+      @include breakpoint('medium') {
+        font-size: 53px;
+        line-height: 53px;
+      }
+
+      @include breakpoint('large') {
+        font-size: 52px;
+        padding: 0 0 30px;
+      }
+    }
+
+    &__description {
+      font-family: var(--secondary-font);
+      font-size: 13px;
+      line-height: 17px;
+      color: #9B9BB4;
+      -webkit-font-smoothing: antialiased;
+
+      @include breakpoint('medium') {
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      @include breakpoint('large') {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 100;
+      }
+    }
+
+    &__extra {
+      display: block;
+      padding: 15px 0 0;
+      font-family: var(--secondary-font);
+      font-weight: 600;
+      font-size: 10px;
+      line-height: 16px;
+      color: #9B9BB4;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      @include breakpoint('large') {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+  }
+}

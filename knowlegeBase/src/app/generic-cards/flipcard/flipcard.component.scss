@@ -1,0 +1,343 @@
+@import '../global/mixin';
+
+.gl {
+  &__title {
+    padding-bottom: 20px;
+  }
+
+  &__description {
+    max-width: 80%;
+  }
+
+  &__wrapper {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    display: grid;
+    grid-row-gap: 30px;
+
+    @include breakpoint('medium') {
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 40px;
+      grid-row-gap: 40px;
+      padding-right: 130px;
+      padding-bottom: 120px;
+    }
+
+    @include breakpoint('large') {
+      grid-template-columns: repeat(4, 1fr);
+      padding-right: 100px;
+    }
+  }
+}
+
+.card {
+  background-color: transparent;
+  height: 480px;
+  position: relative;
+  perspective: 1000px;
+
+  @include breakpoint('medium') {
+    height: 500px;
+  }
+
+  @include breakpoint('large') {
+    height: 523px;
+  }
+
+  &__flip {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+    &--flipped {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__title {
+    padding-top: 35px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 31px;
+    color: #65698A;
+  }
+
+  &__add {
+    border-radius: 10px;
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    background: #fff;
+    transform: rotateY(0deg);
+
+    &__first {
+      cursor: pointer;
+
+      .ic-add-plus:before {
+        content: "+";
+        transition: color .3s ease-in-out;
+      }
+
+      &:hover {
+        .card__title {
+          color: var(--blue);
+        }
+
+        .ic-add-plus {
+          &:before {
+            color: var(--blue);
+          }
+        }
+      }
+
+    }
+
+    &__plus {
+      width: 75px;
+      height: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 120px auto 0;
+
+      &:before {
+        font-size: 60px;
+      }
+    }
+  }
+
+  &__data {
+    border-radius: 10px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+
+    &__actions {
+      padding: 0 0 35px;
+
+      &__title {
+        font-family: var(--secondary-font);
+        font-weight: 600;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #B4B4D3;
+        padding: 0 0 10px;
+      }
+
+      &__wrapper {
+        display: flex;
+
+        &__link {
+          font-family: var(--secondary-font);
+          font-weight: normal;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #65698A;
+          cursor: pointer;
+
+          &--active {
+            color: #128CE1;
+            text-decoration: underline;
+          }
+
+          &--disabled {
+            color: var(--placeholder);
+          }
+
+          &:last-child {
+            margin-left: auto;
+          }
+        }
+      }
+    }
+
+    &__content {
+      padding: 40px 15px 15px;
+
+      &__wrapper {
+        padding: 0 15px 5px;
+      }
+
+      &__btns {
+        display: flex;
+        border-top: 1px solid #DCDCE9;
+
+        .ic-add-ok {
+          &:before {
+            content: "OK";
+            font-size: 12px;
+            color: #128CE1;
+          }
+        }
+
+        .ic-modal-close {
+          &:before {
+            content: "X";
+            font-size: 12px;
+            color: #128CE1;
+          }
+        }
+
+        &__link {
+          display: flex;
+          width: 50%;
+          height: 50px;
+          cursor: pointer;
+          justify-content: center;
+          align-items: center;
+
+          &:first-child {
+            border-right: 1px solid #DCDCE9;
+
+            &:before {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__static {
+    height: 100%;
+    border-radius: 10px;
+    background: #fff;
+    position: relative;
+
+    &__age {
+      padding: 22px 0 10px;
+      font-weight: 300;
+      font-size: 94px;
+      text-align: center;
+      letter-spacing: -4px;
+      color: #65698A;
+    }
+
+    &__text {
+      padding: 0 0 50px;
+      color: #65698A;
+      text-align: center;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 19px;
+      font-family: var(--secondary-font);
+    }
+
+    &__gen {
+      text-align: center;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 10px;
+      font-family: var(--secondary-font);
+      color: #B4B4D3;
+    }
+
+    &__edit {
+      color: #B4B4D3;
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      cursor: pointer;
+
+      a {
+        text-decoration: none;
+        margin: 0 7px;
+        cursor: pointer;
+
+        &:before {
+          font-size: 16px;
+          color: #B4B4D3;
+        }
+      }
+    }
+
+    &__relationship {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: center;
+      color: var(--description);
+      font-size: var(--primart-font);
+      padding: 14px 0 0;
+    }
+
+    &__title {
+      text-align: center;
+      color: #65698A;
+      font-size: 20px;
+      padding-top: 10px;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .sep {
+    &__label {
+      font-size: 10px;
+      color: #B4B4D3;
+    }
+
+    &__input {
+      &__text {
+        font-size: 20px;
+      }
+    }
+
+    &__error {
+      padding: 5px 0 25px;
+      @include breakpoint('large') {
+        height: 46px;
+      }
+    }
+
+    &__date {
+      position: relative;
+      margin: 0 0 5px;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--input-border);
+      }
+
+      &__wrapper {
+        &__input {
+          min-height: 26px;
+        }
+      }
+    }
+
+    &--small {
+      padding: 0 0 35px;
+
+      .sep__input__text {
+        border-bottom: 1px solid var(--input-border);
+        padding-bottom: 5px;
+      }
+    }
+
+    &--full {
+      .sep__label {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}

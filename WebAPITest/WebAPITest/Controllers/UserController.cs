@@ -23,7 +23,6 @@ namespace WebAPITest.Controllers
       this._userService = userServices;
     }
 
-
     // GET: api/User
     [HttpGet]
     public IEnumerable<Usuario> Get()
@@ -51,8 +50,7 @@ namespace WebAPITest.Controllers
     public void Put(string id, [FromBody] Usuario value)
     {
       _userService.Update(id, value);
-    }
-     
+    }     
 
     // DELETE: api/ApiWithActions/5
     [HttpDelete("{id}")]
@@ -60,6 +58,31 @@ namespace WebAPITest.Controllers
     {
       Usuario deletuser = _userService.Get(id);
       _userService.Remove(deletuser);
+    }
+
+    [HttpPost ("authenticate")]
+    public Usuario Authentication([FromBody] DataAuthenticate objUser)
+    {
+      return _userService.Authentication(objUser.nombreUsuario, objUser.password);
+    }
+
+    //[HttpGet("{id}", Name = "getConocimientos")]
+    //public IEnumerable<ConocimientoUsuario> getConocimientos(string id)
+    //{
+    //  return _userService.getConocimientos(id);
+    //}
+
+    //[Route("user/{id}/conocimientos")]
+    //[HttpGet]
+    //public IEnumerable<ConocimientoUsuario> getConocimientosUsuario(string id) {
+    //  return _userService.getConocimientos(id);
+    //}
+
+    [Route("knowledges/{id}")]
+    [HttpGet]
+    public IEnumerable<ConocimientoUsuario> getConocimientos(string id)
+    {
+      return _userService.getConocimientos(id);
     }
   }
 

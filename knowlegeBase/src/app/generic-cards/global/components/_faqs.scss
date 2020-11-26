@@ -1,0 +1,162 @@
+.home-faqs {
+  background: var(--home-hogar-grey);
+  padding: 30px 30px 80px;
+  -webkit-font-smoothing: antialiased;
+
+  @include breakpoint('large') {
+    padding: 100px 0 120px;
+  }
+
+  &__title {
+    padding: 0 0 50px;
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--home-hogar-title);
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: var(--secondary-font);
+    text-transform: uppercase;
+
+    @include breakpoint('medium') {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include breakpoint('large') {
+      font-size: 20px;
+      line-height: 24px;
+      padding: 0 0 80px;
+    }
+  }
+
+  &__box {
+    border-top: 1px solid var(--home-hogar-faqs-border);
+
+    @include breakpoint('large') {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    &--last {
+      border-bottom: 1px solid var(--home-hogar-faqs-border);
+
+      @include breakpoint('large') {
+        border-bottom: 0 none;
+      }
+    }
+
+    &__title {
+      position: relative;
+      padding: 15px 0;
+
+      @include breakpoint('large') {
+        padding: 20px 0 25px;
+      }
+
+      h2 {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 27px;
+        color: var(--home-hogar-faqs-title);
+        padding-right: 30px;
+
+        @include breakpoint('medium') {
+          font-weight: 400;
+          color: #0055A0;
+        }
+
+        @include breakpoint('large') {
+          line-height: 24px;
+        }
+      }
+
+      &:before {
+        color: #128CE1;
+        position: absolute;
+        top: 25px;
+        right: 0;
+        font-size: 8px;
+
+        @include breakpoint('large') {
+          display: none;
+        }
+      }
+    }
+
+    &__content {
+      display: none;
+      padding: 0 0 20px;
+
+      @include breakpoint('large') {
+        display:block; 
+      }
+
+      p {
+        font-family: var(--secondary-font);
+        font-size: 13px;
+        line-height: 17px;
+        color: var(--home-hogar-faqs-description);
+        word-break: break-word;
+
+        @include breakpoint('large') {
+          font-size: 18px;
+          line-height: 24px;
+        }
+      }
+    }
+
+    &--open {
+      .home-faqs__box__title {
+        h2 {
+          color: var(--title);
+        }
+
+        &:before {
+          content: "\e904";
+        }
+      }
+
+      .home-faqs__box__content {
+        display: block;
+      }
+    }
+  }
+
+  &__btn {
+    padding: 60px 0 0;
+    display: flex;
+    justify-content: center;
+
+    &__link {
+      font-family: var(--secondary-font);
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 12px;
+      color: #0055A0;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #0055A0;
+      border-radius: 20px;
+      padding: 0 60px;
+
+      @include breakpoint('medium') {
+        height: 50px;
+        border-radius: 25px;
+        border-width: 2px;
+      }
+
+      @include breakpoint('large') {
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover {
+        background: var(--blue);
+        color: #fff;
+      }
+    }
+  }
+}

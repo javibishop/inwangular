@@ -1,0 +1,125 @@
+.sep__slider {
+  position: relative;
+
+  // Variables
+  $height: 3em;
+  $thumb-height: 12px;
+  $track-height: 2px;
+
+  // colours
+  $upper-color: #65698A;
+  $lower-color: #128CE1;
+  $thumb-color: #0055A0;
+
+  $upper-background: linear-gradient(to bottom, $upper-color, $upper-color) 100% 50% / 100% $track-height no-repeat transparent;
+  $lower-background: linear-gradient(to bottom, $lower-color, $lower-color) 100% 50% / 100% $track-height no-repeat transparent;
+
+  // Webkit cannot style progress so we fake it with a long shadow
+  // on the thumb element
+  @function webkit-slider-thumb-shadow($i: 1) {
+    $val: #{$i}px 0 0 -#{($thumb-height - $track-height) / 2} #{$upper-color};
+    @if $i == 1 {
+      @for $k from 2 through 2000 {
+        $val: #{$val}, webkit-slider-thumb-shadow($k);
+      }
+    }
+    @return $val;
+  }
+
+  input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 0;
+      width: 100%;
+      height: $height;
+      overflow: hidden;
+      position: relative;
+      top: 4px;
+      background: transparent;
+
+      &:focus {
+          outline: none;
+      }
+
+      &::-webkit-slider-runnable-track {
+          width: 100%;
+          height: 0.3em;
+          cursor: pointer;
+          background: $lower-background;
+          border-radius: 0;
+          border: none;
+      }
+
+      &::-webkit-slider-thumb {
+          border: 1px solid $thumb-color;
+          height: $thumb-height;
+          width: $thumb-height;
+          border-radius: 100%;
+          background: $thumb-color;
+          cursor: pointer;
+          -webkit-appearance: none;
+          position: relative;
+          top: 50%;
+          margin-top: (-$thumb-height/2);
+          box-shadow: webkit-slider-thumb-shadow(), 0 0 0 0.1em rgba(0,0,0,0.1);
+      }
+
+      &::-moz-range-track,
+      &::-moz-range-progress {
+          width: 100%;
+          height: $height;
+          background: $upper-background;
+      }
+
+      &::-moz-range-progress {
+          background: $lower-background;
+      }
+
+      &::-moz-range-thumb {
+          -moz-appearance: none;
+          box-shadow: 0 0 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 1);
+          border: 1px solid $thumb-color;
+          height: $thumb-height;
+          width: $thumb-height;
+          border-radius: 100%;
+          background: $thumb-color;
+          cursor: pointer;
+          border-radius: 100%;
+          border: 0;
+      }
+
+      &::-ms-track {
+          width: 100%;
+          height: $height;
+          border: 0;
+          // color needed to hide track marks
+          color: transparent;
+          background: transparent;
+      }
+
+      &::-ms-fill-lower {
+          background: $lower-background;
+      }
+
+      &::-ms-fill-upper {
+          background: $upper-background;
+      }
+
+      &::-ms-thumb {
+          appearance: none;
+          -ms-appearance: none;
+          box-shadow: 0 0 0 rgba(0,0,0,0.1);
+          border: 1px solid $thumb-color;
+          height: $thumb-height;
+          width: $thumb-height;
+          border-radius: 100%;
+          background: $thumb-color;
+          cursor: pointer;
+          border-radius: 100%;
+          border: 0;
+          // IE Edge thinks it can support -webkit prefixes
+          top: 0;
+          margin: 0;
+      }
+  }
+}

@@ -1,0 +1,502 @@
+// @import url('https://fonts.googleapis.com/css?family=Lato:300,400|Ubuntu:300,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Barlow:300,400&display=swap');
+
+@font-face {
+    font-family: 'FS Joey';
+    src: url('/assets/fonts/Light/FSJoeyWeb-Light.woff2') format('woff2'),
+        url('/assets/fonts/Light/FSJoeyWeb-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FS Joey';
+    src: url('/assets/fonts/Bold/FSJoeyWeb-Bold.woff2') format('woff2'),
+        url('/assets/fonts/Bold/FSJoeyWeb-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FS Joey';
+    src: url('/assets/fonts/Italic/FSJoeyWeb-Italic.woff2') format('woff2'),
+        url('/assets/fonts/Italic/FSJoeyWeb-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'FS Joey';
+    src: url('/assets/fonts/Regular/FSJoeyWeb-Regular.woff2') format('woff2'),
+        url('/assets/fonts/Regular/FSJoeyWeb-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FS Joey';
+    src: url('/assets/fonts/BoldItalic/FSJoeyWeb-BoldItalic.woff2') format('woff2'),
+        url('/assets/fonts/BoldItalic/FSJoeyWeb-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'FS Joey';
+    src: url('/assets/fonts/Medium/FSJoeyWeb-Medium.woff2') format('woff2'),
+        url('/assets/fonts/Medium/FSJoeyWeb-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FS Joey';
+    src: url('/assets/fonts/Heavy/FSJoeyWeb-Heavy.woff2') format('woff2'),
+        url('/assets/fonts/Heavy/FSJoeyWeb-Heavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'sura';
+  src:  url('assets/fonts/icons/sura.eot?a9jndi');
+  src:  url('assets/fonts/icons/sura.eot?a9jndi#iefix') format('embedded-opentype'),
+    url('assets/fonts/icons/sura.ttf?a9jndi') format('truetype'),
+    url('assets/fonts/icons/sura.woff?a9jndi') format('woff'),
+    url('assets/fonts/icons/sura.svg?a9jndi#sura') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="ic-"]:before, [class*=" ic-"]:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'sura' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ic-agents-1:before {
+  content: "\e967";
+  color: #b3b3d2;
+}
+.ic-vida-coverage-7:before {
+  content: "\e965";
+  color: #b3b3d2;
+}
+.ic-add-plus:before {
+  content: "\e964";
+  color: #b4b4d3;
+}
+.ic-vida-coverage-2:before {
+  content: "\e95e";
+  color: #b4b4d3;
+}
+.ic-vida-coverage-3:before {
+  content: "\e95f";
+  color: #b4b4d3;
+}
+.ic-vida-coverage-4:before {
+  content: "\e960";
+  color: #b4b4d3;
+}
+.ic-vida-coverage-5:before {
+  content: "\e961";
+  color: #b4b4d3;
+}
+.ic-vida-coverage-6:before {
+  content: "\e962";
+  color: #b4b4d3;
+}
+.ic-vida-coverage-1:before {
+  content: "\e963";
+  color: #b4b4d3;
+}
+.ic-vida-error:before {
+  content: "\e95d";
+  color: #f9706e;
+}
+.ic-vida-warning:before {
+  content: "\e95c";
+  color: #f9706e;
+}
+.ic-covergastos-20:before {
+  content: "\e95b";
+  color: #b4b4d3;
+}
+.ic-vida-coverage-8:before {
+  content: "\e966";
+  color: #b3b3d2;
+}
+.ic-covergastos-18:before {
+  content: "\e956";
+  color: #b4b4d3;
+}
+.ic-covergastos-19:before {
+  content: "\e957";
+  color: #b4b4d3;
+}
+.ic-covergastos-17:before {
+  content: "\e958";
+  color: #b4b4d3;
+}
+.ic-covergastos-16:before {
+  content: "\e959";
+  color: #b4b4d3;
+}
+.ic-covergastos-15:before {
+  content: "\e95a";
+  color: #b4b4d3;
+}
+.ic-add-back:before {
+  content: "\e954";
+  color: #dcdce9;
+}
+.ic-add-ok:before {
+  content: "\e955";
+  color: #0055a0;
+}
+.ic-covergastos-1:before {
+  content: "\e946";
+  color: #b4b4d3;
+}
+.ic-covergastos-2:before {
+  content: "\e947";
+  color: #b4b4d3;
+}
+.ic-covergastos-3:before {
+  content: "\e948";
+  color: #b4b4d3;
+}
+.ic-covergastos-4:before {
+  content: "\e949";
+  color: #b4b4d3;
+}
+.ic-covergastos-5:before {
+  content: "\e94a";
+  color: #b4b4d3;
+}
+.ic-covergastos-6:before {
+  content: "\e94b";
+  color: #b4b4d3;
+}
+.ic-covergastos-7:before {
+  content: "\e94c";
+  color: #b4b4d3;
+}
+.ic-covergastos-8:before {
+  content: "\e94d";
+  color: #b4b4d3;
+}
+.ic-covergastos-9:before {
+  content: "\e94e";
+  color: #b4b4d3;
+}
+.ic-covergastos-10:before {
+  content: "\e94f";
+  color: #b4b4d3;
+}
+.ic-covergastos-11:before {
+  content: "\e950";
+  color: #b4b4d3;
+}
+.ic-covergastos-12:before {
+  content: "\e951";
+  color: #b4b4d3;
+}
+.ic-covergastos-13:before {
+  content: "\e952";
+  color: #b4b4d3;
+}
+.ic-covergastos-14:before {
+  content: "\e953";
+  color: #b4b4d3;
+}
+.ic-coverage-list-13:before {
+  content: "\e945";
+  color: #b4b4d3;
+}
+.ic-check-download:before {
+  content: "\e944";
+  color: #3ccf8e;
+}
+.ic-postal-code:before {
+  content: "\e941";
+  color: #3ccf8e;
+}
+.ic-coverage-list-1:before {
+  content: "\e935";
+  color: #b4b4d3;
+}
+.ic-coverage-list-2:before {
+  content: "\e936";
+  color: #b4b4d3;
+}
+.ic-coverage-list-3:before {
+  content: "\e937";
+  color: #b4b4d3;
+}
+.ic-coverage-list-4:before {
+  content: "\e938";
+  color: #b4b4d3;
+}
+.ic-coverage-list-5:before {
+  content: "\e939";
+  color: #b4b4d3;
+}
+.ic-coverage-list-6:before {
+  content: "\e93a";
+  color: #b4b4d3;
+}
+.ic-coverage-list-7:before {
+  content: "\e93b";
+  color: #b4b4d3;
+}
+.ic-coverage-list-8:before {
+  content: "\e93c";
+  color: #b4b4d3;
+}
+.ic-coverage-list-9:before {
+  content: "\e93d";
+  color: #b4b4d3;
+}
+.ic-coverage-list-10:before {
+  content: "\e93e";
+  color: #b4b4d3;
+}
+.ic-coverage-list-11:before {
+  content: "\e93f";
+  color: #b4b4d3;
+}
+.ic-coverage-list-12:before {
+  content: "\e940";
+  color: #b4b4d3;
+}
+.ic-additional-1:before {
+  content: "\e929";
+  color: #b4b4d3;
+}
+.ic-additional-2:before {
+  content: "\e92a";
+  color: #b4b4d3;
+}
+.ic-additional-3:before {
+  content: "\e92b";
+  color: #b4b4d3;
+}
+.ic-additional-4:before {
+  content: "\e92c";
+  color: #b4b4d3;
+}
+.ic-additional-5:before {
+  content: "\e92d";
+  color: #b4b4d3;
+}
+.ic-additional-6:before {
+  content: "\e92e";
+  color: #b4b4d3;
+}
+.ic-additional-7:before {
+  content: "\e92f";
+  color: #b4b4d3;
+}
+.ic-additional-8:before {
+  content: "\e930";
+  color: #b4b4d3;
+}
+.ic-additional-9:before {
+  content: "\e931";
+  color: #b4b4d3;
+}
+.ic-additional-10:before {
+  content: "\e932";
+  color: #b4b4d3;
+}
+.ic-additional-11:before {
+  content: "\e933";
+  color: #b4b4d3;
+}
+.ic-additional-12:before {
+  content: "\e934";
+  color: #b4b4d3;
+}
+.ic-cover-stain-1:before {
+  content: "\e91c";
+  color: #dcdce9;
+}
+.ic-cover-stain-2:before {
+  content: "\e91d";
+  color: #dcdce9;
+}
+.ic-cover-stain-3:before {
+  content: "\e91e";
+  color: #dcdce9;
+}
+.ic-cover-stain-4:before {
+  content: "\e91f";
+  color: #dcdce9;
+}
+.ic-cover-stain-5:before {
+  content: "\e920";
+  color: #dcdce9;
+}
+.ic-cover-stain-6:before {
+  content: "\e921";
+  color: #dcdce9;
+}
+.ic-scroll:before {
+  content: "\e922";
+  color: #65698a;
+}
+.ic-cover-1:before {
+  content: "\e923";
+  color: #b4b4d3;
+}
+.ic-cover-2:before {
+  content: "\e924";
+  color: #b4b4d3;
+}
+.ic-cover-3:before {
+  content: "\e925";
+  color: #b4b4d3;
+}
+.ic-cover-4:before {
+  content: "\e926";
+  color: #b4b4d3;
+}
+.ic-cover-5:before {
+  content: "\e927";
+  color: #b4b4d3;
+}
+.ic-cover-6:before {
+  content: "\e928";
+  color: #b4b4d3;
+}
+.ic-edit:before {
+  content: "\e91a";
+  color: #b4b4d3;
+}
+.ic-delete:before {
+  content: "\e91b";
+  color: #b4b4d3;
+}
+.ic-remove:before {
+  content: "\e918";
+  color: #fff;
+}
+.ic-add:before {
+  content: "\e919";
+  color: #fff;
+}
+.ic-coverage-2:before {
+  content: "\e909";
+  color: #b4b4d3;
+}
+.ic-coverage-7:before {
+  content: "\e911";
+  color: #b4b4d3;
+}
+.ic-coverage-3:before {
+  content: "\e912";
+  color: #b4b4d3;
+}
+.ic-coverage-5:before {
+  content: "\e913";
+  color: #b4b4d3;
+}
+.ic-coverage-6:before {
+  content: "\e914";
+  color: #b4b4d3;
+}
+.ic-coverage-1:before {
+  content: "\e915";
+  color: #b4b4d3;
+}
+.ic-coverage-4:before {
+  content: "\e916";
+  color: #b4b4d3;
+}
+.ic-coverage:before {
+  content: "\e917";
+  color: #b4b4d3;
+}
+.ic-building:before {
+  content: "\e910";
+  color: #b4b4d3;
+}
+.ic-modal-close:before {
+  content: "\e90f";
+  color: #dcdce9;
+}
+.ic-type:before {
+  content: "\e90e";
+  color: #b4b4d3;
+}
+.ic-collapsed-down:before {
+  content: "\e942";
+  color: #128ce1;
+}
+.ic-collapsed-up:before {
+  content: "\e943";
+  color: #128ce1;
+}
+.ic-arrow-l:before {
+  content: "\e900";
+  color: #128ce1;
+}
+.ic-arrow-r:before {
+  content: "\e901";
+  color: #128ce1;
+}
+.ic-check:before {
+  content: "\e902";
+  color: #3ccf8e;
+}
+.ic-type-1:before {
+  content: "\e903";
+  color: #b4b4d3;
+}
+.ic-arrow-t:before {
+  content: "\e904";
+  color: #fff;
+}
+.ic-arrow-d:before {
+  content: "\e905";
+  color: #fff;
+}
+.ic-card-1:before {
+  content: "\e906";
+  color: #b4b4d3;
+}
+.ic-card-2:before {
+  content: "\e907";
+  color: #b4b4d3;
+}
+.ic-card-3:before {
+  content: "\e908";
+  color: #b4b4d3;
+}
+.ic-building-2:before {
+  content: "\e90a";
+  color: #b4b4d3;
+}
+.ic-download:before {
+  content: "\e90b";
+  color: #128ce1;
+}
+.ic-close:before {
+  content: "\e90c";
+  color: #f9706e;
+}
+.ic-info:before {
+  content: "\e90d";
+  color: #dcdce9;
+}

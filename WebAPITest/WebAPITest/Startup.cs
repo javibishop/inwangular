@@ -28,27 +28,36 @@ namespace WebAPITest
       services.AddSingleton<IUserDatabaseSettings>(sp =>
           sp.GetRequiredService<IOptions<UserDatabaseSettings>>().Value);
       services.AddSingleton<UserService>();
+      services.AddCors();
       services.AddControllers();
     }
 
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+  // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+  public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+  {
+    if (env.IsDevelopment())
     {
-      if (env.IsDevelopment())
-      {
-        app.UseDeveloperExceptionPage();
-      }
-
-      //app.UseHttpsRedirection();
-
-      app.UseRouting();
-
-      //app.UseAuthorization();
-
-      app.UseEndpoints(endpoints =>
-      {
-        endpoints.MapControllers();
-      });
+      app.UseDeveloperExceptionPage();
     }
+
+    //app.UseHttpsRedirection();
+
+
+    app.UseCors(x =>
+    {
+      x
+      .AllowAnyOrigin()
+      .AllowAnyMethod()
+      .AllowAnyHeader();
+    });
+    app.UseRouting();
+
+    //app.UseAuthorization();
+
+    app.UseEndpoints(endpoints =>
+    {
+      endpoints.MapControllers();
+    });
   }
+}
 }

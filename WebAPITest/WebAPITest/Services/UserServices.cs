@@ -27,7 +27,14 @@ namespace WebAPITest.Services
 
     public Usuario Create(Usuario usuario)
     {
-      _user.InsertOne(usuario);
+      try
+      {
+        _user.InsertOne(usuario);
+      }
+      catch (Exception e)
+      {
+        throw new Exception("No se pudo dar de alta el usuario." + e.Message);
+      }
       return usuario;
     }
 
@@ -39,5 +46,16 @@ namespace WebAPITest.Services
 
     public void Remove(string id) =>
         _user.DeleteOne(usuario => usuario.Id == id);
+
+    public Usuario Authentication(string username, string password)
+    {
+        return _user.Find<Usuario>(usuario => usuario.nombreUsuario == username &&
+                                  usuario.password == password).FirstOrDefault();
+    }
+
+    public IEnumerable<ConocimientoUsuario> getConocimientos(string id)
+    {
+      return _user.Find<Usuario>(usuario => usuario.Id == id).FirstOrDefault().Conocimientos;
+    }
   }
 }

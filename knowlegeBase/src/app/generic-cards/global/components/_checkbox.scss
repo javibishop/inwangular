@@ -1,0 +1,69 @@
+//Checkboxes
+.checkboxes {
+  padding: 40px 0;
+
+  @include breakpoint('large') {
+    padding: 60px 0 0;
+  }
+
+  &__wrapper {
+    padding: 0 0 15px;
+  }
+
+  &__check {
+    color: var(--checkbox);
+    cursor: pointer;
+    display: inline;
+    font-family: var(--secondary-font);
+    font-size: 13px;
+    font-weight: 100;
+    line-height: 17px;
+    max-width: 80%;
+    padding: 0 0 0 25px;
+    position: relative;
+
+    @include breakpoint('medium') {
+      max-width: 90%;
+    }
+
+    @include breakpoint('large') {
+      font-size: 14px;
+    }
+    a {
+      text-decoration: underline;
+    }
+
+    &__input {
+      cursor: pointer;
+      height: 0;
+      opacity: 0;
+      position: absolute;
+      width: 0;
+
+      &:checked ~ .checkboxes__check__mark:after {
+        display: block;
+      }
+    }
+
+    &__mark {
+      border-radius: 1px;
+      border: 1px solid var(--checkbox);
+      height: 15px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 15px;
+
+      &:after {
+        color: var(--success);
+        content: "\e902";
+        display: none;
+        font-family: 'sura';
+        font-size: 7px;
+        left: 2px;
+        position: absolute;
+        top: -2px;
+      }
+    }
+  }
+}
