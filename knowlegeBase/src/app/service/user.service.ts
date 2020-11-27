@@ -34,7 +34,7 @@ export class UserService {
     }
 
     delete(id: string) {
-        return this.http.delete(`/users/` + id);
+        return this.http.delete(this.url + '/' + id);
     }
 
     getConocimientos(id: string) {

@@ -13,7 +13,7 @@
   &__description {
     max-width: 80%;
   }
-
+  
   &__wrapper {
     padding-top: 35px;
     padding-bottom: 35px;
@@ -190,231 +190,98 @@
   }
 }
 
-.rfc-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  width: 100%;
-  height: 100vh;
-  background: rgba(38, 38, 38, 0.3);
-  pointer-events: none;
-  opacity: 0;
-
-  @include breakpoint('large') {
-    transition: all .3s ease-in-out;
-  }
-
-  &--show {
-    pointer-events: inherit;
-    opacity: 1;
-  }
-
-  &__content {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #fff;
-    border-radius: 15px;
-    padding: 50px 30px;
-    margin: 40px;
-
-    @include breakpoint('medium') {
-      width: 330px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      margin: 0;
-    }
-
-    @include breakpoint('large') {
-      padding: 100px 60px 50px;
-      width: 620px;
-    }
-
-    &__close {
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-
-      &:before {
-        font-size: 22px;
-      }
-    }
-
-    &__text {
-      padding: 80px 0;
-      font-weight: 300;
-      font-size: 28px;
-      line-height: 31px;
-      text-align: center;
-      color: var(--rfc-modal-text);
-
-      @include breakpoint('medium') {
-        font-size: 30px;
-        line-height: 36px;
-      }
-
-      @include breakpoint('large') {
-        padding: 0 0 40px;
-      }
-    }
-
-    &__btn {
-      &__link {
-        font-family: var(--secondary-font);
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 12px;
-        text-align: center;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        padding: 15px 0;
-        width: 100%;
-        border: 2px solid var(--rfc-modal-link);
-        color: var(--rfc-modal-link);
-        border-radius: 50px;
-        display: block;
-        cursor: pointer;
-
-        @include breakpoint('medium') {
-          max-width: 220px;
-          margin: 0 auto;
-        }
-
-        @include breakpoint('large') {
-          max-width: 160px;
-          font-size: 14px;
-          transition: all .3s ease-in-out;
-        }
-
-        &:hover {
-          @include breakpoint('large') {
-            background: var(--rfc-modal-link);
-            color: #fff;
-          }
-        }
-      }
-    }
-  }
-}
-
 .modal {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  height: 100%;
   width: 100%;
-  height: 100vh;
-  background: rgba(38, 38, 38, 0.3);
-  pointer-events: none;
-  opacity: 0;
+  background-color: #0002;
+  z-index: 50;
 
-  @include breakpoint('large') {
-    transition: all .3s ease-in-out;
-  }
-
-  &--show {
-    pointer-events: inherit;
-    opacity: 1;
-  }
-
-  &__content {
+  &__delete {
     position: absolute;
-    left: 0;
+    background-color: white;
     top: 50%;
-    transform: translateY(-50%);
-    background: #fff;
+    left: 50%;
+    transform: translate(-50% , -50%);
     border-radius: 15px;
-    padding: 50px 30px;
-    margin: 40px;
+    width: 300px;
+    height: 420px;
 
     @include breakpoint('medium') {
-      width: 330px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      margin: 0;
+      width: 490px;
+      height: 320px;
     }
 
     @include breakpoint('large') {
-      padding: 100px 60px 50px;
       width: 620px;
     }
+  }
 
-    &__close {
-      width: 40px;
-      height: 40px;
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    .ic-modal-close {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      top: 24px;
+      right: 18px;
       cursor: pointer;
+    }
+  }
 
-      &:before {
-        font-size: 22px;
-      }
+  &__title {
+    font-family: var(--primary-font);
+    font-size: 28px;
+    line-height: 30px;
+    font-weight: 300;
+    padding: 130px 30px 0;
+    text-align: center;
+
+    @include breakpoint('medium'){
+      font-size: 30px;
+      line-height: 36px;
+      padding: 105px 45px 0;
     }
 
-    &__text {
-      padding: 80px 0;
-      font-weight: 300;
-      font-size: 28px;
-      line-height: 31px;
-      text-align: center;
-      color: var(--rfc-modal-text);
+    @include breakpoint('large'){
+      padding: 105px 100px 0;
+    }
+  }
 
-      @include breakpoint('medium') {
-        font-size: 30px;
-        line-height: 36px;
-      }
+  &__btn {
+    align-items: center;
+    border-radius: 30px;
+    border: 1px solid var(--radio);
+    color: var(--radio);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--secondary-font);
+    font-size: 10px;
+    font-weight: 500;
+    height: 32px;
+    justify-content: center;
+    letter-spacing: 2px;
+    margin: 70px 0 0;
+    min-width: 110px;
+    text-transform: uppercase;
 
+    @include breakpoint('medium') {
+      margin: 40px 0 0;
+    }
+
+    @include breakpoint('large') {
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
       @include breakpoint('large') {
-        padding: 0 0 40px;
-      }
-    }
-
-    &__btn {
-      &__link {
-        font-family: var(--secondary-font);
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 12px;
-        text-align: center;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        padding: 15px 0;
-        width: 100%;
-        border: 2px solid var(--rfc-modal-link);
-        color: var(--rfc-modal-link);
-        border-radius: 50px;
-        display: block;
-        cursor: pointer;
-
-        @include breakpoint('medium') {
-          max-width: 220px;
-          margin: 0 auto;
-        }
-
-        @include breakpoint('large') {
-          max-width: 160px;
-          font-size: 14px;
-          transition: all .3s ease-in-out;
-        }
-
-        &:hover {
-          @include breakpoint('large') {
-            background: var(--rfc-modal-link);
-            color: #fff;
-          }
-        }
+        background-color: var(--radio);
+        color: #fff;
       }
     }
   }
