@@ -1,5 +1,5 @@
-<div class="content__wrapper">
-  <div class="card">
+<div class="gl__wrapper ">
+  <div class="card"  *ngIf="user && !user.administrador">
     <div class="card__flip" [ngClass]="{'card__flip--flipped': isNewFlipped}">
       <a class="card__add card__add__first" (click)="flipCard()" *ngIf="!isFlipped">
         <h3 class="card__title">Agregar Conocimiento</h3>
@@ -10,33 +10,51 @@
           <div class="card__data__content__wrapper">
 
             <div class="card__data__actions">
-              <p class="card__data__actions__title">parentesco</p>
+              <p class="card__data__actions__title">Tecnología</p>
               <div class="card__data__actions__wrapper">
-                <a class="card__data__actions__wrapper__link" [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_PARENTEZCO'].toLowerCase() == 'cónyuge'}" (click)="setRelationship('Cónyuge')">cónyuge</a>
-                <a class="card__data__actions__wrapper__link" [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_PARENTEZCO'].toLowerCase() == 'hijo' }" (click)="setRelationship('Hijo')">hijo/a</a>
+                <select name="tecnologias" (change)="onChangeTecnologia($event.target.value)">
+                  <option [value]="item.description" *ngFor="let item of tecnologias">{{item.description}}</option>
+                </select>
               </div>
             </div>
 
 
             <div class="card__data__actions">
-              <p class="card__data__actions__title">género</p>
+              <p class="card__data__actions__title">Nivel</p>
               <div class="card__data__actions__wrapper">
-                <a class="card__data__actions__wrapper__link" [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_SEXO'].toLowerCase() == 'mujer'}" (click)="setGender('Mujer')">femenino</a>
-                <a class="card__data__actions__wrapper__link" [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_SEXO'].toLowerCase() == 'hombre'}" (click)="setGender('Hombre')">masculino</a>
+                <input type="number" min="1" max="10" (change)="onChangeNivel($event.target.value)"/>
               </div>
             </div>
 
-            <div class="sep__error ic-close" [hidden]="!showErrorMessage"><p>Todos los campos son requeridos!</p></div>
+            <div class="sep__error ic-close" [hidden]="!showErrorMessage">
+              <p>Todos los campos son requeridos!</p>
+            </div>
           </div>
           <div class="card__data__content__btns">
-            <a class="card__data__content__btns__link ic-modal-close" (click)="flipCard()"></a>
-            <a class="card__data__content__btns__link ic-add-ok" (click)="saveCard()"></a>
+            <!-- <a class="card__data__content__btns__link btn-danger" (click)="flipCard()"><i class="fa fa-times"></i></a> -->
+            <!-- <a class="card__data__content__btns__link btn-success" (click)="saveCard()"><i class="fa fa-save"></i></a> -->
+
+            <a class="card__data__content__btns__link" (click)="flipCard()">
+              <div class="row">
+                <div class="col text-center">
+                  <button type="button" class="btn btn-outline-primary"><i class="fa fa-times"></i></button>
+                </div>
+              </div>
+            </a>
+            
+            <a class="card__data__content__btns__link" (click)="saveCard()">
+              <div class="row">
+                <div class="col text-center">
+                  <button type="button" class="btn btn-outline-primary"><i class="fa fa-save"></i></button>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="card" *ngFor="let person of knowledges, let i = index">
+  <div class="card " *ngFor="let person of knowledges, let i = index">
     <div class="card__flip" [ngClass]="{'card__flip--flipped': person.flipped}">
       <a class="card__add">
         <div class="card__static">
@@ -48,8 +66,13 @@
             <a *ngIf="person['ELIMINAR'] === 'true'" class="ic-delete" (click)="deleteModal(i)"></a>
           </div>
           <!-- <input type="button" class="btn btn-primary">Editar<input/> -->
-           <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-          <button type="button" class="btn btn-outline-primary">Editar</button>
+          <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+          <div class="row"  *ngIf="user && !user.administrador">
+            <div class="col text-center">
+              <button type="button" class="btn btn-outline-primary"><i class="fa fa-pencil-square-o"
+                  aria-hidden="true"></i></button>
+            </div>
+          </div>
         </div>
       </a>
       <div class="card__data" *ngIf="isFlipped">
@@ -66,8 +89,12 @@
             <div class="card__data__actions">
               <p class="card__data__actions__title">parentesco</p>
               <div class="card__data__actions__wrapper">
-                <a class="card__data__actions__wrapper__link" [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_PARENTEZCO'].toLowerCase() == 'cónyuge'}" (click)="setRelationship('Cónyuge')">cónyuge</a>
-                <a class="card__data__actions__wrapper__link" [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_PARENTEZCO'].toLowerCase() == 'hijo' }" (click)="setRelationship('Hijo')">hijo/a</a>
+                <a class="card__data__actions__wrapper__link"
+                  [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_PARENTEZCO'].toLowerCase() == 'cónyuge'}"
+                  (click)="setRelationship('Cónyuge')">cónyuge</a>
+                <a class="card__data__actions__wrapper__link"
+                  [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_PARENTEZCO'].toLowerCase() == 'hijo' }"
+                  (click)="setRelationship('Hijo')">hijo/a</a>
               </div>
             </div>
 
@@ -75,12 +102,18 @@
             <div class="card__data__actions">
               <p class="card__data__actions__title">género</p>
               <div class="card__data__actions__wrapper">
-                <a class="card__data__actions__wrapper__link" [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_SEXO'].toLowerCase() == 'mujer'}" (click)="setGender('Mujer')">femenino</a>
-                <a class="card__data__actions__wrapper__link" [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_SEXO'].toLowerCase() == 'hombre'}" (click)="setGender('Hombre')">masculino</a>
+                <a class="card__data__actions__wrapper__link"
+                  [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_SEXO'].toLowerCase() == 'mujer'}"
+                  (click)="setGender('Mujer')">femenino</a>
+                <a class="card__data__actions__wrapper__link"
+                  [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_SEXO'].toLowerCase() == 'hombre'}"
+                  (click)="setGender('Hombre')">masculino</a>
               </div>
             </div>
 
-            <div class="sep__error ic-close" [hidden]="!showErrorMessage"><p>Todos los campos son requeridos!</p></div>
+            <div class="sep__error ic-close" [hidden]="!showErrorMessage">
+              <p>Todos los campos son requeridos!</p>
+            </div>
           </div>
           <div class="card__data__content__btns">
             <a class="card__data__content__btns__link ic-modal-close" (click)="flipCard(i)"></a>

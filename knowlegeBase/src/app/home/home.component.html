@@ -1,4 +1,4 @@
-<h1>Hi {{currentUser.apellido}}, {{currentUser.nombre}}!</h1>
+<!-- <h1>Hi {{currentUser.apellido}}, {{currentUser.nombre}}!</h1>
 
 <div *ngIf="currentUser.administrador">
     <h3>All registered users:</h3>
@@ -28,5 +28,64 @@
             </tbody>
         </table>
     </div>
-</div>
+</div> -->
 
+
+<head>
+    <title>Table V03</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="table/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    <div class="limiter" *ngIf="currentUser.administrador && users">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <h1>Hi {{currentUser.apellido}}, {{currentUser.nombre}}!</h1>
+                <h3>All registered users:</h3>
+                <div class="table100 ver1 m-b-110">
+                    <table data-vertable="ver1">
+                        <thead>
+                            <tr class="row100 head">
+                                <th class="column100 column1" data-column="column1">Usuario</th>
+                                <th class="column100 column1" data-column="column2">Nombre</th>
+                                <th class="column100 column1" data-column="column3">Apellido</th>
+                                <th class="column100 column1" data-column="column4">Edad</th>
+                                <th class="column100 column1" data-column="column5">Cargo</th>
+                                <th class="column100 column1" data-column="column6">Recurso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="row100" *ngFor="let user of users">
+                                <td class="column100 column1" data-column="column1">{{ user.nombreUsuario }}</td>
+                                <td class="column100 column2" data-column="column2">{{ user.nombre }}</td>
+                                <td class="column100 column3" data-column="column3">{{ user.apellido }}</td>
+                                <td class="column100 column4" data-column="column4">{{ user.edad }}</td>
+                                <td class="column100 column5" data-column="column5">{{ user.cargo }}</td>
+                                <td class="column100 column6" data-column="column6">{{ user.codRecurso }}</td>
+                                <td class="column100 column7" data-column="column7"><a (click)="deleteUser(user.id)"
+                                        class="text-danger">Delete</a></td>
+                                <td class="column100 column8" data-column="column8"><a
+                                        (click)="verConocimientos(user.id)" class="text-danger">Ver conocimientos</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>

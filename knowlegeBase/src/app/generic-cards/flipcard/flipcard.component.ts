@@ -1,4 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
+import { User } from 'src/app/_models';
+import { ConocimientoUsuario } from 'src/app/_models/ConocimientoUsuario';
 
 @Component({
   selector: 'flip-card',
@@ -8,45 +11,25 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FlipCardComponent implements OnInit {
   isFlipped = false;
   isNewFlipped = false;
-  fecNacimientoValue;
   showErrorMessage = false;
+  subscriptions = [];
+  user;
 
-  currentAseg: any = {};
+  currentKnow: any = {};
 
   @Input() knowledges: any;
-  @Output() changeInsuredPeopleEmitter = new EventEmitter();
-  @Output() deleteInsuredEmitter = new EventEmitter();
 
-  inputDateConfig = {
-    dayMinLength: 1,
-    dayMaxLength: 2,
-    monthMinLength: 1,
-    monthMaxLength: 2,
-    yearMinLength: 4,
-    yearMaxLength: 4,
-    dayLabel: '',
-    monthLabel: '',
-    yearLabel: '',
-    dayLabelClass: 'label',
-    monthLabelClass: 'label',
-    yearLabelClass: 'label',
-    legend: 'Fecha de nacimiento',
-    dayPlaceHolder: 'DD',
-    monthPlaceHolder: 'MM',
-    yearPlaceHolder: 'YYYY',
-    invalidMessage: 'INGRESE UNA FECHA VÁLIDA',
-    invalidMinDate: 'INGRESE UNA FECHA VÁLIDA',
-    invalidMaxDate: 'INGRESE UNA FECHA VÁLIDA',
-    invalidRegEx: 'INGRESE UNA FECHA VÁLIDA',
-    invalidDayLength: 'Tamaño inconrrecto del día',
-    invalidMonthLength: 'Tamaño inconrrecto del mes',
-    invalidYearLength: 'Tamaño inconrrecto del año',
-  };
+  tecnologias = [{ description: 'C-Sharp' }, { description: 'NET.CORE' }, { description: 'Angular' },
+  { description: 'JavaScript' }, { description: 'Delphi' }, { description: 'Css' }];
 
-  getFechaNacimiento(event: any) {
-    if (event) {
-      this.currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_FECHANACIMIENTO'] = event;
+  constructor(private userService: UserService) { }
+
+  ngOnInit() {
+    for (let i = 0; i < this.knowledges.length; i++) {
+      this.knowledges[i].flipped = false;
+      this.knowledges[i].id = gen.next().value;
     }
+    this.user = JSON.parse(localStorage.getItem('currentUser')) as any;
   }
 
   saveCard(e?) {
@@ -55,61 +38,54 @@ export class FlipCardComponent implements OnInit {
       return;
     }
     if (e >= 0) {
-      this.knowledges[e] = this.currentAseg;
+      this.knowledges[e] = this.currentKnow;
     } else {
-      this.currentAseg.id = gen.next().value;
-      this.knowledges = [...this.knowledges, this.currentAseg];
+      this.knowledges = [...this.knowledges, this.currentKnow];
+
+      this.currentKnow.nivel = 0;
+      const objKnowledge = this.currentKnow as ConocimientoUsuario;
+      this.subscriptions.push(this.userService.addConocimiento(this.user.id, objKnowledge).subscribe());
     }
     this.flipCard(e);
-    this.changeInsuredPeopleEmitter.emit(this.knowledges);
+
   }
 
   flipCard(e?) {
     if (e >= 0) {
       this.isFlipped = !this.isFlipped;
       this.knowledges[e].flipped = !this.knowledges[e].flipped;
-      this.currentAseg = { ...this.knowledges[e] };
+      this.currentKnow = { ...this.knowledges[e] };
     } else {
       this.isNewFlipped = !this.isNewFlipped;
-      this.currentAseg = {
-        'EDITAR': 'true',
-        'ELIMINAR': 'true',
-        'E_LISTA_DEPENDIENTES|E_DEPENDIENTE_NOMBRE': '',
-        'E_LISTA_DEPENDIENTES|E_DEPENDIENTE_SEXO': 'Hombre',
-        'E_LISTA_DEPENDIENTES|E_DEPENDIENTE_PARENTEZCO': 'Cónyuge',
-        birthDate: {},
+      this.currentKnow = {
+        'conocimiento': { 'Nombre': '' },
+        'nivel': '0',
       };
     }
     this.showErrorMessage = false;
   }
 
-
-  deleteModal(i) {
-    this.deleteInsuredEmitter.emit(this.knowledges[i].id);
-  }
-
   isValid() {
     return (
-      this.currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_NOMBRE'] &&
-      this.currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_FECHANACIMIENTO'] &&
-      this.currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_PARENTEZCO'] &&
-      this.currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_SEXO']
+      this.currentKnow.conocimiento.Nombre &&
+      this.currentKnow.nivel
     );
   }
 
-  constructor() {}
+  onChangeTecnologia(newVal) {
+    this.currentKnow.conocimiento['Nombre'] = newVal;
+  }
 
-  ngOnInit() {
-    for (let i = 0; i < this.knowledges.length; i++) {
-      this.knowledges[i].flipped = false;
-      this.knowledges[i].id = gen.next().value;
-    }
+  onChangeNivel(newVal) {
+    this.currentKnow['nivel'] = newVal;
   }
 }
 
 function* idMaker() {
   var index = 0;
-  while(true)
-      yield index++;
+  while (true)
+    yield index++;
 }
 var gen = idMaker();
+
+
