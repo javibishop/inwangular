@@ -9,6 +9,8 @@ import { ConocimientoUsuario } from 'src/app/_models/ConocimientoUsuario';
   styleUrls: ['./flipcard.component.scss'],
 })
 export class FlipCardComponent implements OnInit {
+  @Output() objEmit: EventEmitter<any> = new EventEmitter();
+
   isFlipped = false;
   isNewFlipped = false;
   showErrorMessage = false;
@@ -42,12 +44,19 @@ export class FlipCardComponent implements OnInit {
     } else {
       this.knowledges = [...this.knowledges, this.currentKnow];
 
-      this.currentKnow.nivel = 0;
+      // this.currentKnow.nivel = 0;
       const objKnowledge = this.currentKnow as ConocimientoUsuario;
       this.subscriptions.push(this.userService.addConocimiento(this.user.id, objKnowledge).subscribe());
     }
     this.flipCard(e);
+  }
 
+  removeCard(sender) {
+    const objKnowledge = new ConocimientoUsuario();
+    objKnowledge.conocimiento.nombre = sender.conocimiento.nombre;
+    objKnowledge.nivel = sender.nivel;
+    this.subscriptions.push(this.userService.removeConocimiento(this.user.id, objKnowledge).subscribe());
+    this.objEmit.emit(true);
   }
 
   flipCard(e?) {
@@ -58,7 +67,7 @@ export class FlipCardComponent implements OnInit {
     } else {
       this.isNewFlipped = !this.isNewFlipped;
       this.currentKnow = {
-        'conocimiento': { 'Nombre': '' },
+        'conocimiento': { 'nombre': '' },
         'nivel': '0',
       };
     }
@@ -67,17 +76,17 @@ export class FlipCardComponent implements OnInit {
 
   isValid() {
     return (
-      this.currentKnow.conocimiento.Nombre &&
+      this.currentKnow.conocimiento.nombre &&
       this.currentKnow.nivel
     );
   }
 
   onChangeTecnologia(newVal) {
-    this.currentKnow.conocimiento['Nombre'] = newVal;
+    this.currentKnow.conocimiento['nombre'] = newVal;
   }
 
   onChangeNivel(newVal) {
-    this.currentKnow['nivel'] = newVal;
+    this.currentKnow['nivel'] = Number(newVal);
   }
 }
 

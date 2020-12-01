@@ -1,3 +1,3 @@
 export class Conocimiento {
-  Nombre: string;
+  nombre: string;
 }

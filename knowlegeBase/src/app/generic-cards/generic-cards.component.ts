@@ -10,6 +10,7 @@ export class GenericCardsComponent implements OnInit {
 
   @Input() knowledgesList: any = [];
   @Output() changeEmitter: EventEmitter<any> = new EventEmitter<any>();
+  @Output() objEmit: EventEmitter<any> = new EventEmitter();
 
   isFlipped = false;
   isInputVisible = false;
@@ -17,6 +18,12 @@ export class GenericCardsComponent implements OnInit {
   // insuredPeople = [];
   knowledges = [];
   idInsuredToDelete: any;
+
+  constructor() {}
+
+  ngOnInit() {
+    this.knowledges = this.knowledgesList;
+  }
 
   changeInsuredPeople($event){
     this.knowledges = $event;
@@ -28,7 +35,7 @@ export class GenericCardsComponent implements OnInit {
     this.showModal = true;
   }
 
-  deleteInsured() {
+  deleteCard() {
     const idx = this.knowledges.findIndex((elem) => {
       return elem.id === this.idInsuredToDelete;
     });
@@ -37,9 +44,7 @@ export class GenericCardsComponent implements OnInit {
     this.showModal = false;
   }
 
-  constructor() {}
-
-  ngOnInit() {
-    this.knowledges = this.knowledgesList;
+  receivedOutput(value) {
+    this.objEmit.emit(value);
   }
 }

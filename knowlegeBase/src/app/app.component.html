@@ -3,7 +3,7 @@
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Home</a>
         <a class="nav-item nav-link" routerLink="/profile">Profile</a>
-        <a class="nav-item nav-link" routerLink="/knowledge" *ngIf="currentUser && !currentUser.administrador">Conocimientos</a>
+        <a class="nav-item nav-link" routerLink="/knowledge/{{ currentUser.id }}" *ngIf="currentUser && !currentUser.administrador">Conocimientos</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
 </nav>

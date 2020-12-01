@@ -9,8 +9,7 @@
 </ul>  -->
 
 <div *ngIf="knowledges">
-  <app-generic-cards
-  [knowledgesList]="knowledges">
+  <app-generic-cards [knowledgesList]="knowledges" (objEmit)="receivedOutput($event)">
   </app-generic-cards>
 </div>
             <!-- </div>

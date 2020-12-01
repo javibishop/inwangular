@@ -1,6 +1,10 @@
 import { Conocimiento } from './conocimiento';
 
 export class ConocimientoUsuario {
-  Conocimiento: Conocimiento;
-  Nivel: number;
+  conocimiento: Conocimiento;
+  nivel: number;
+
+  constructor(){
+    this.conocimiento = new Conocimiento();
+  }
 }

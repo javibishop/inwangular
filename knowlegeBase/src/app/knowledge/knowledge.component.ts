@@ -26,7 +26,13 @@ export class KnowledgeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params.id;
-    console.log(id);
+    this.subscriptions.push(this.userService.getConocimientos(id).subscribe( r => {
+      this.knowledges = r as [ConocimientoUsuario];
+    }));
+  }
+
+  receivedOutput(value) {
+    const id = this.activatedRoute.snapshot.params.id;
     this.subscriptions.push(this.userService.getConocimientos(id).subscribe( r => {
       this.knowledges = r as [ConocimientoUsuario];
     }));

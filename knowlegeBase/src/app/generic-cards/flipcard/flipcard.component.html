@@ -1,5 +1,5 @@
 <div class="gl__wrapper ">
-  <div class="card"  *ngIf="user && !user.administrador">
+  <div class="card" *ngIf="user && !user.administrador">
     <div class="card__flip" [ngClass]="{'card__flip--flipped': isNewFlipped}">
       <a class="card__add card__add__first" (click)="flipCard()" *ngIf="!isFlipped">
         <h3 class="card__title">Agregar Conocimiento</h3>
@@ -21,7 +21,7 @@
             <div class="card__data__actions">
               <p class="card__data__actions__title">Nivel</p>
               <div class="card__data__actions__wrapper">
-                <input type="number" min="1" max="10" (change)="onChangeNivel($event.target.value)"/>
+                <input type="number" min="1" max="10" (change)="onChangeNivel($event.target.value)" />
               </div>
             </div>
 
@@ -37,7 +37,7 @@
                 </div>
               </div>
             </a>
-            
+
             <a class="card__data__content__btns__link" (click)="saveCard()">
               <div class="row">
                 <div class="col text-center">
@@ -50,24 +50,36 @@
       </div>
     </div>
   </div>
-  <div class="card " *ngFor="let person of knowledges, let i = index">
-    <div class="card__flip" [ngClass]="{'card__flip--flipped': person.flipped}">
+  <div class="card " *ngFor="let know of knowledges, let i = index">
+    <div class="card__flip" [ngClass]="{'card__flip--flipped': know.flipped}">
       <a class="card__add">
         <div class="card__static">
-          <h3 class="card__title">{{person.conocimiento.nombre}}</h3>
+          <h3 class="card__title">{{know.conocimiento.nombre}}</h3>
           <p class="card__static__text">Nivel</p>
-          <h4 class="card__static__age">{{person.nivel}}</h4>
-          <div class="card__static__edit" *ngIf="person['EDITAR'] === 'true' && !isFlipped && !isNewFlipped">
+          <h4 class="card__static__age">{{know.nivel}}</h4>
+          <div class="card__static__edit" *ngIf="know['EDITAR'] === 'true' && !isFlipped && !isNewFlipped">
             <a (click)="flipCard(i)" class="ic-edit"></a>
-            <a *ngIf="person['ELIMINAR'] === 'true'" class="ic-delete" (click)="deleteModal(i)"></a>
+            <a *ngIf="know['ELIMINAR'] === 'true'" class="ic-delete" (click)="deleteModal(i)"></a>
           </div>
           <!-- <input type="button" class="btn btn-primary">Editar<input/> -->
           <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-          <div class="row"  *ngIf="user && !user.administrador">
-            <div class="col text-center">
-              <button type="button" class="btn btn-outline-primary"><i class="fa fa-pencil-square-o"
-                  aria-hidden="true"></i></button>
-            </div>
+          <div class="card__data__content__btns">
+            <a class="card__data__content__btns__link" (click)="aa()">
+              <div class="row" *ngIf="user && !user.administrador">
+                <div class="col text-center">
+                  <button type="button" class="btn btn-outline-primary">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
+            <a class="card__data__content__btns__link" (click)="removeCard(know)">
+              <div class="row" *ngIf="user && !user.administrador">
+                <div class="col text-center">
+                  <button type="button" class="btn btn-outline-primary"><i class="fa fa-trash"></i></button>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </a>
@@ -87,7 +99,7 @@
             <div class="card__data__actions">
               <p class="card__data__actions__title">Nivel</p>
               <div class="card__data__actions__wrapper">
-                <input type="number" min="1" max="10" (change)="onChangeNivel($event.target.value)"/>
+                <input type="number" min="1" max="10" (change)="onChangeNivel($event.target.value)" />
               </div>
             </div>
 
