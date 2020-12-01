@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, Inject, ChangeDe
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { StateUserService } from '../service/state-user.service';
 import { UserService } from '../service/user.service';
 
 import { User } from '../_models';
@@ -24,11 +25,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     list: any = {};
 
     constructor(
-        private authenticationService: AuthenticationService,
         private userService: UserService,
-        private router: Router
+        private router: Router,
+        private stateUserService: StateUserService
     ) {
-        this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+        this.currentUserSubscription = this.stateUserService.currentUserSubject.subscribe(user => {
             this.currentUser = user;
         });
     }

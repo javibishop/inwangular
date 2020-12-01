@@ -6,7 +6,7 @@ import { User } from '../_models';
   providedIn: 'root'
 })
 export class StateUserService {
-  public currentUserSubject: BehaviorSubject<User>;
+  public currentUserSubject: BehaviorSubject<User> = new BehaviorSubject(null);
 
   constructor() { }
 }

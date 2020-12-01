@@ -18,7 +18,6 @@
               </div>
             </div>
 
-
             <div class="card__data__actions">
               <p class="card__data__actions__title">Nivel</p>
               <div class="card__data__actions__wrapper">
@@ -31,9 +30,6 @@
             </div>
           </div>
           <div class="card__data__content__btns">
-            <!-- <a class="card__data__content__btns__link btn-danger" (click)="flipCard()"><i class="fa fa-times"></i></a> -->
-            <!-- <a class="card__data__content__btns__link btn-success" (click)="saveCard()"><i class="fa fa-save"></i></a> -->
-
             <a class="card__data__content__btns__link" (click)="flipCard()">
               <div class="row">
                 <div class="col text-center">
@@ -80,34 +76,18 @@
           <div class="card__data__content__wrapper">
 
             <div class="card__data__actions">
-              <p class="card__data__actions__title">Recurso</p>
+              <p class="card__data__actions__title">Tecnología</p>
               <div class="card__data__actions__wrapper">
-                <a class="card__data__actions__wrapper__link">cónyuge</a>
+                <select name="tecnologias" (change)="onChangeTecnologia($event.target.value)">
+                  <option [value]="item.description" *ngFor="let item of tecnologias">{{item.description}}</option>
+                </select>
               </div>
             </div>
 
             <div class="card__data__actions">
-              <p class="card__data__actions__title">parentesco</p>
+              <p class="card__data__actions__title">Nivel</p>
               <div class="card__data__actions__wrapper">
-                <a class="card__data__actions__wrapper__link"
-                  [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_PARENTEZCO'].toLowerCase() == 'cónyuge'}"
-                  (click)="setRelationship('Cónyuge')">cónyuge</a>
-                <a class="card__data__actions__wrapper__link"
-                  [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_PARENTEZCO'].toLowerCase() == 'hijo' }"
-                  (click)="setRelationship('Hijo')">hijo/a</a>
-              </div>
-            </div>
-
-
-            <div class="card__data__actions">
-              <p class="card__data__actions__title">género</p>
-              <div class="card__data__actions__wrapper">
-                <a class="card__data__actions__wrapper__link"
-                  [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_SEXO'].toLowerCase() == 'mujer'}"
-                  (click)="setGender('Mujer')">femenino</a>
-                <a class="card__data__actions__wrapper__link"
-                  [ngClass]="{'card__data__actions__wrapper__link--active': currentAseg['E_LISTA_DEPENDIENTES|E_DEPENDIENTE_SEXO'].toLowerCase() == 'hombre'}"
-                  (click)="setGender('Hombre')">masculino</a>
+                <input type="number" min="1" max="10" (change)="onChangeNivel($event.target.value)"/>
               </div>
             </div>
 

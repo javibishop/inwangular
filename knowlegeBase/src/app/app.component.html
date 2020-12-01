@@ -2,6 +2,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/profile">Profile</a>
         <a class="nav-item nav-link" routerLink="/knowledge" *ngIf="currentUser && !currentUser.administrador">Conocimientos</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
@@ -18,14 +19,4 @@
             <!-- </div> -->
         <!-- </div> -->
     </div>
-</div>
-
-<!-- credits -->
-<div class="text-center">
-    <p>
-        <a href="http://jasonwatmore.com/post/2018/10/29/angular-7-user-registration-and-login-example-tutorial" target="_top">Angular 7 - User Registration and Login Example & Tutorial</a>
-    </p>
-    <p>
-        <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-    </p>
 </div>
