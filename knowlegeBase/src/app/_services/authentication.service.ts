@@ -8,16 +8,25 @@ import { StateUserService } from '../service/state-user.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    public currentUser: Observable<User>;
+    currentUser: User;
     url = 'http://localhost:60339/api/user';
 
     constructor(private http: HttpClient, private stateUserService: StateUserService) {
         // this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         // this.currentUser = this.currentUserSubject.asObservable();
+        this.stateUserService.currentUserSubject.subscribe(x => {
+            this.currentUser = x;
+        });
     }
 
     public get currentUserValue(): User {
-        return this.stateUserService.currentUserSubject.value;
+        if (this.currentUser == null && localStorage.getItem('currentUser') !== '') {
+            const user = JSON.parse(localStorage.getItem('currentUser')) as User;
+            this.stateUserService.currentUserSubject.next(user);
+            return user;
+        } else{
+            return this.currentUser;
+        }
     }
 
     login(nombreUsuario: string, password: string) {
