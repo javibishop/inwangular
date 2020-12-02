@@ -1,0 +1,16 @@
+<fieldset class="rating">
+  <!-- <input type="radio" [name]="inputName" value="5" [checked]="rating===5" />
+  <label title="Rocks!" (click)='onClick(5)'>5 stars</label>
+
+  <input type="radio" [name]="inputName" value="4" [checked]="rating===4" />
+  <label title="Pretty good" (click)='onClick(4)'>4 stars</label> -->
+
+  <input type="radio" [name]="inputName" value="2" [checked]="rating===2" />
+  <label title="Avanzado" (click)='readOnly ? false : onClick(2)'>3 stars</label>
+
+  <input type="radio" [name]="inputName" value="1" [checked]="rating===1" />
+  <label title="Intermedio" (click)='readOnly ? false : onClick(1)'>2 stars</label>
+
+  <input type="radio" [name]="inputName" value="0" [checked]="rating===0" />
+  <label title="Inicial" (click)='readOnly ? false : onClick(0)'>1 star</label>
+</fieldset>

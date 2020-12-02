@@ -1,18 +1,6 @@
-<!-- <div class="jumbotron"> 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3 offset-sm-3">  -->
+
 <h2>Conocimientos</h2>
-
-<!-- <ul *ngFor="let knowledge of knowledges">
-  <li>{{ knowledge.conocimiento.nombre }} , {{ knowledge.nivel }}</li>
-</ul>  -->
-
 <div *ngIf="knowledges">
   <app-generic-cards [knowledgesList]="knowledges" (objEmit)="receivedOutput($event)">
   </app-generic-cards>
 </div>
-            <!-- </div>
-        </div>
-    </div>
-  </div> -->

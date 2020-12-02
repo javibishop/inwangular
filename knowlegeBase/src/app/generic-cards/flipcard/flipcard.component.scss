@@ -41,7 +41,7 @@
   }
 
   @include breakpoint('large') {
-    height: 410px;
+    height: 288px;
   }
 
   &__flip {
@@ -120,7 +120,7 @@
     transform: rotateY(180deg);
 
     &__actions {
-      padding: 0 0 35px;
+      padding: 0 0 23px;
 
       &__title {
         font-family: var(--secondary-font);
@@ -129,7 +129,7 @@
         letter-spacing: 2px;
         text-transform: uppercase;
         color: #B4B4D3;
-        padding: 0 0 10px;
+        padding: 0 0 3px;
       }
 
       &__wrapper {
@@ -420,3 +420,7 @@
 
 @media print{.rating-container .clear-rating{display:none}}
 
+#divRanking {
+  width: 32%;
+  margin: 0 auto;
+}

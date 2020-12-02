@@ -18,6 +18,7 @@ import { KnowledgeComponent } from './knowledge/knowledge.component';
 import { GenericCardsComponent } from './generic-cards/generic-cards.component';
 import { FlipCardComponent } from './generic-cards/flipcard/flipcard.component';
 import { ProfileComponent } from './profile/profile.component';
+import { StarRatingComponent } from './_components/star-rating/star-rating.component';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
         ReactiveFormsModule,
         FormsModule,
         HttpClientModule,
-        routing,
+        routing
     ],
     declarations: [
         AppComponent,
@@ -37,7 +38,8 @@ import { ProfileComponent } from './profile/profile.component';
         KnowledgeComponent,
         GenericCardsComponent,
         FlipCardComponent,
-        ProfileComponent
+        ProfileComponent,
+        StarRatingComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

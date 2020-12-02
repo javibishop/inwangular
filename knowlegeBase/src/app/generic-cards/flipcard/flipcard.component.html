@@ -21,19 +21,22 @@
             <div class="card__data__actions">
               <p class="card__data__actions__title">Nivel</p>
               <div class="card__data__actions__wrapper">
-                <input type="number" min="1" max="10" (change)="onChangeNivel($event.target.value)" />
+                <!-- <input type="number" min="1" max="10" (change)="onChangeNivel($event.target.value)" /> -->
+                <app-rating [rating]='0' [itemId]='1' (ratingClick)='ratingAddClick($event)' [readOnly]="user.administrador"></app-rating>
               </div>
             </div>
-
             <div class="sep__error ic-close" [hidden]="!showErrorMessage">
               <p>Todos los campos son requeridos!</p>
             </div>
+            <div class="sep__error ic-close" [hidden]="errorMsg == null">
+              <p>{{ errorMsg }}</p>
+            </div>            
           </div>
           <div class="card__data__content__btns">
             <a class="card__data__content__btns__link" (click)="flipCard()">
               <div class="row">
                 <div class="col text-center">
-                  <button type="button" class="btn btn-outline-primary"><i class="fa fa-times"></i></button>
+                  <button type="button" title="Cancelar" class="btn btn-outline-primary"><i class="fa fa-times"></i></button>
                 </div>
               </div>
             </a>
@@ -41,7 +44,7 @@
             <a class="card__data__content__btns__link" (click)="saveCard()">
               <div class="row">
                 <div class="col text-center">
-                  <button type="button" class="btn btn-outline-primary"><i class="fa fa-save"></i></button>
+                  <button type="button" title="Guardar" class="btn btn-outline-primary"><i class="fa fa-save"></i></button>
                 </div>
               </div>
             </a>
@@ -56,15 +59,22 @@
         <div class="card__static">
           <h3 class="card__title">{{know.conocimiento.nombre}}</h3>
           <p class="card__static__text">Nivel</p>
-          <h4 class="card__static__age">{{know.nivel}}</h4>
+          <!-- <h4 class="card__static__age">{{know.nivel}}</h4> -->
+          <div class="card__data__actions">
+            <div class="card__data__actions__wrapper">
+              <div id="divRanking">
+                <app-rating [rating]='know.nivel' [itemId]='know.id' (ratingClick)='ratingEditClick($event)' [readOnly]="user.administrador">
+                </app-rating>
+              </div>
+            </div>
+          </div>
           <div class="card__static__edit" *ngIf="know['EDITAR'] === 'true' && !isFlipped && !isNewFlipped">
             <a (click)="flipCard(i)" class="ic-edit"></a>
             <a *ngIf="know['ELIMINAR'] === 'true'" class="ic-delete" (click)="deleteModal(i)"></a>
           </div>
-          <!-- <input type="button" class="btn btn-primary">Editar<input/> -->
-          <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+
           <div class="card__data__content__btns">
-            <a class="card__data__content__btns__link" (click)="aa()">
+            <!-- <a class="card__data__content__btns__link" (click)="editCard(know)">
               <div class="row" *ngIf="user && !user.administrador">
                 <div class="col text-center">
                   <button type="button" class="btn btn-outline-primary">
@@ -72,7 +82,7 @@
                   </button>
                 </div>
               </div>
-            </a>
+            </a> -->
             <a class="card__data__content__btns__link" (click)="removeCard(know)">
               <div class="row" *ngIf="user && !user.administrador">
                 <div class="col text-center">
@@ -83,7 +93,7 @@
           </div>
         </div>
       </a>
-      <div class="card__data" *ngIf="isFlipped">
+      <!-- <div class="card__data" *ngIf="know.editable">
         <div class="card__data__content">
           <div class="card__data__content__wrapper">
 
@@ -114,7 +124,7 @@
 
         </div>
 
-      </div>
+      </div> -->
 
     </div>
   </div>

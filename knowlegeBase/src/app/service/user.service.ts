@@ -9,6 +9,7 @@ export class UserService {
   url = 'http://localhost:60339/api/user';
   addKnowledgeRoute = '/addKnowledge/';
   removeKnowledgeRoute = '/removeKnowledge/';
+  editKnowledgeRoute = '/editKnowledge/';
   urlKnowledge = 'http://localhost:60339/api/knowledge/';
     httpOptions = {
       headers: new HttpHeaders({
@@ -51,6 +52,11 @@ export class UserService {
 
     removeConocimiento(id: string, knowledge: ConocimientoUsuario){
       const finalUrl = this.url + this.removeKnowledgeRoute;
+      return this.http.put(finalUrl + id, knowledge);
+    }
+
+    editConocimiento(id: string, knowledge: ConocimientoUsuario){
+      const finalUrl = this.url + this.editKnowledgeRoute;
       return this.http.put(finalUrl + id, knowledge);
     }
 }

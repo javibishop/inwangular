@@ -35,16 +35,17 @@ export class GenericCardsComponent implements OnInit {
     this.showModal = true;
   }
 
-  deleteCard() {
+  deleteCard(id?) {
     const idx = this.knowledges.findIndex((elem) => {
-      return elem.id === this.idInsuredToDelete;
+      return elem.id === id; //this.idInsuredToDelete;
     });
     this.knowledges.splice(idx, 1);
     this.changeEmitter.emit(this.knowledges);
     this.showModal = false;
   }
 
-  receivedOutput(value) {
-    this.objEmit.emit(value);
+  receivedOutput(id) {
+    this.deleteCard(id);
+    this.objEmit.emit(id);
   }
 }

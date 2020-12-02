@@ -1,10 +1,8 @@
 
 <section class="gl">
-  <h2 class="title"></h2>
-  <p class="description"></p>
   <flip-card [knowledges]="knowledges" (objEmit)="receivedOutput($event)"></flip-card>
 
-  <div class="rfc-modal" [ngClass]="{'rfc-modal--show': showModal}">
+  <!-- <div class="rfc-modal" [ngClass]="{'rfc-modal--show': showModal}">
     <div class="rfc-modal__content">
       <a class="rfc-modal__content__close ic-modal-close" (click)="showModal = false;"></a>
       <p class="rfc-modal__content__text">¿Estás seguro que quieres eliminar al integrante seleccionado?</p>
@@ -12,5 +10,5 @@
         <a class="rfc-modal__content__btn__link" (click)="deleteInsured()">Confirmar</a>
       </div>
     </div>
-  </div>
+  </div> -->
 </section>

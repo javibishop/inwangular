@@ -16,6 +16,7 @@ export class FlipCardComponent implements OnInit {
   showErrorMessage = false;
   subscriptions = [];
   user;
+  errorMsg = null;
 
   currentKnow: any = {};
 
@@ -27,9 +28,11 @@ export class FlipCardComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    for (let i = 0; i < this.knowledges.length; i++) {
-      this.knowledges[i].flipped = false;
-      this.knowledges[i].id = gen.next().value;
+    if (this.knowledges !== undefined && this.knowledges !== null) {
+      for (let i = 0; i < this.knowledges.length; i++) {
+        this.knowledges[i].flipped = false;
+        this.knowledges[i].id = gen.next().value;
+      }
     }
     this.user = JSON.parse(localStorage.getItem('currentUser')) as any;
   }
@@ -39,16 +42,26 @@ export class FlipCardComponent implements OnInit {
       this.showErrorMessage = true;
       return;
     }
-    if (e >= 0) {
-      this.knowledges[e] = this.currentKnow;
-    } else {
-      this.knowledges = [...this.knowledges, this.currentKnow];
-
-      // this.currentKnow.nivel = 0;
-      const objKnowledge = this.currentKnow as ConocimientoUsuario;
-      this.subscriptions.push(this.userService.addConocimiento(this.user.id, objKnowledge).subscribe());
-    }
-    this.flipCard(e);
+    const objKnowledge = this.currentKnow as ConocimientoUsuario;
+    this.subscriptions.push(this.userService.addConocimiento(this.user.id, objKnowledge).subscribe(
+      () => {
+        if (e >= 0) {
+          this.knowledges[e] = this.currentKnow;
+        } else {
+          if (this.knowledges !== undefined && this.knowledges !== null) {
+            this.knowledges = [...this.knowledges, this.currentKnow];
+          } else {
+            this.knowledges = [];
+            this.knowledges.push(this.currentKnow);
+          }
+          this.flipCard(e);
+          this.errorMsg = null;
+        }
+      },
+      error => {
+        this.errorMsg = error;
+      }
+    ));
   }
 
   removeCard(sender) {
@@ -56,7 +69,7 @@ export class FlipCardComponent implements OnInit {
     objKnowledge.conocimiento.nombre = sender.conocimiento.nombre;
     objKnowledge.nivel = sender.nivel;
     this.subscriptions.push(this.userService.removeConocimiento(this.user.id, objKnowledge).subscribe());
-    this.objEmit.emit(true);
+    this.objEmit.emit(sender.id);
   }
 
   flipCard(e?) {
@@ -87,6 +100,20 @@ export class FlipCardComponent implements OnInit {
 
   onChangeNivel(newVal) {
     this.currentKnow['nivel'] = Number(newVal);
+  }
+
+  ratingAddClick(clickObj: any): void {
+    this.currentKnow.nivel = Number(clickObj.rating);
+  }
+
+  ratingEditClick(clickObj: any): void {
+    const i = this.knowledges.findIndex(e => e.id === clickObj.id);
+    this.knowledges[i].nivel = Number(clickObj.rating);
+
+    const objKnowledge = new ConocimientoUsuario();
+    objKnowledge.conocimiento.nombre = this.knowledges[i].conocimiento.nombre;
+    objKnowledge.nivel = this.knowledges[i].nivel;
+    this.subscriptions.push(this.userService.editConocimiento(this.user.id, objKnowledge).subscribe());
   }
 }
 
