@@ -31,5 +31,7 @@ namespace WebAPITest.Models
 
     public bool Administrador { get; set; }
 
+    public IEnumerable<ConocimientoDominio> ConocimientosDominio { get; set; }
+
   }
 }
