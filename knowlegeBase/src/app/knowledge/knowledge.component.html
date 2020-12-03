@@ -1,6 +1,6 @@
 
 <h2>Conocimientos</h2>
-<div *ngIf="knowledges">
+<div>
   <app-generic-cards [knowledgesList]="knowledges" (objEmit)="receivedOutput($event)">
   </app-generic-cards>
 </div>

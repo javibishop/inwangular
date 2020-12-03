@@ -1,0 +1,4 @@
+
+https://gustavodohara.com/blogangular/zone-js-sirve-chismes-cuenta/
+https://rxjs-dev.firebaseapp.com/api/index/function/forkJoin
+http://es6-features.org/#ObjectMatchingShorthandNotation

@@ -1,6 +1,6 @@
 
 <section class="gl">
-  <flip-card [knowledges]="knowledges" (objEmit)="receivedOutput($event)"></flip-card>
+  <flip-card [knowledges]="knowledges" (objEmit)="receivedOutput($event.target.value)"></flip-card>
 
   <!-- <div class="rfc-modal" [ngClass]="{'rfc-modal--show': showModal}">
     <div class="rfc-modal__content">

@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using WebAPITest.Models;
 using WebAPITest.Services;
+using Microsoft.OpenApi.Models;
+using System;
 
 namespace WebAPITest
 {
@@ -29,6 +31,9 @@ namespace WebAPITest
       services.AddSingleton<UserService>();
       services.AddCors();
       services.AddControllers();
+
+      // https://geeks.ms/jorge/2020/06/01/anadir-swagger-a-una-web-api-con-asp-net-core-3-1/
+      AddSwagger(services);
     }
 
   // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,10 +44,16 @@ namespace WebAPITest
       app.UseDeveloperExceptionPage();
     }
 
-    //app.UseHttpsRedirection();
+      //app.UseHttpsRedirection();
+
+      app.UseSwagger();
+      app.UseSwaggerUI(c =>
+      {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Doc INW test");
+      });
 
 
-    app.UseCors(x =>
+      app.UseCors(x =>
     {
       x
       .AllowAnyOrigin()
@@ -58,5 +69,26 @@ namespace WebAPITest
       endpoints.MapControllers();
     });
   }
-}
+
+    private void AddSwagger(IServiceCollection services)
+    {
+      services.AddSwaggerGen(options =>
+      {
+        var groupName = "v1";
+
+        options.SwaggerDoc(groupName, new OpenApiInfo
+        {
+          Title = $"Foo {groupName}",
+          Version = groupName,
+          Description = "Foo API",
+          Contact = new OpenApiContact
+          {
+            Name = "Foo Company",
+            Email = string.Empty,
+            Url = new Uri("https://foo.com/"),
+          }
+        });
+      });
+    }
+  }
 }
