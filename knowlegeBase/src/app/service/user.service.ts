@@ -11,6 +11,7 @@ export class UserService {
   removeKnowledgeRoute = '/removeKnowledge/';
   editKnowledgeRoute = '/editKnowledge/';
   urlKnowledge = 'http://localhost:60339/api/knowledge/';
+  updateUserRoute = 'http://localhost:60339/api/updateuser/';
     httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -25,7 +26,7 @@ export class UserService {
     }
 
     getById(id: string) {
-        return this.http.get(`/users/` + id);
+        return this.http.get(this.url + `/` + id);
     }
 
     register(user: User) {
@@ -33,7 +34,7 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put(`/users/` + user.id, user);
+        return this.http.put(this.updateUserRoute + `/` + user.id, user);
     }
 
     delete(id: string) {

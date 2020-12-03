@@ -120,7 +120,7 @@
     transform: rotateY(180deg);
 
     &__actions {
-      padding: 0 0 23px;
+      padding: 0 0 11px;
 
       &__title {
         font-family: var(--secondary-font);
@@ -129,7 +129,7 @@
         letter-spacing: 2px;
         text-transform: uppercase;
         color: #B4B4D3;
-        padding: 0 0 3px;
+        padding: 0 0 1px;
       }
 
       &__wrapper {
@@ -161,7 +161,7 @@
     }
 
     &__content {
-      padding: 40px 15px 15px;
+      padding: 9px 15px 15px;
 
       &__wrapper {
         padding: 0 15px 5px;
