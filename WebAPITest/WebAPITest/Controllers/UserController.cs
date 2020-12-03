@@ -66,6 +66,13 @@ namespace WebAPITest.Controllers
       return _userService.Authentication(objUser.nombreUsuario, objUser.password);
     }
 
+    // PUT: api/User/5
+    [HttpPut("deleteConocimiento/{id}", Name = "DeleteConocimiento")]
+    public void DeleteConocimiento(string id, [FromBody] Usuario value)
+    {
+      _userService.Update(id, value);
+    }
+
     //[HttpGet("{id}", Name = "getConocimientos")]
     //public IEnumerable<ConocimientoUsuario> getConocimientos(string id)
     //{

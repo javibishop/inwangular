@@ -25,8 +25,7 @@ namespace WebAPITest
       services.Configure<UserDatabaseSettings>(
           Configuration.GetSection(nameof(UserDatabaseSettings)));
 
-      services.AddSingleton<IUserDatabaseSettings>(sp =>
-          sp.GetRequiredService<IOptions<UserDatabaseSettings>>().Value);
+      services.AddSingleton<IUserDatabaseSettings>(sp => sp.GetRequiredService<IOptions<UserDatabaseSettings>>().Value);
       services.AddSingleton<UserService>();
       services.AddCors();
       services.AddControllers();

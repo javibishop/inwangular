@@ -29,6 +29,8 @@ namespace WebAPITest.Models
       
     public IEnumerable<ConocimientoUsuario> Conocimientos { get; set; }
 
+    public IEnumerable<ConocimientoDominio> ConocimientosDominio { get; set; }
+
     public bool Administrador { get; set; }
 
   }
