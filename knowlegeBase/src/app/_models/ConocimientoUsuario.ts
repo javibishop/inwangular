@@ -4,7 +4,7 @@ export class ConocimientoUsuario {
   conocimiento: Conocimiento;
   nivel: number;
 
-  constructor(){
+  constructor() {
     this.conocimiento = new Conocimiento();
   }
 }

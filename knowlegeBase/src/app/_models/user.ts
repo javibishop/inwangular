@@ -7,4 +7,5 @@ export class User {
     administrador: string;
     codRecurso: string;
     token: string;
+    cargo: string;
 }

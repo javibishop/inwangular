@@ -25,11 +25,11 @@
                 <app-rating [rating]='0' [itemId]='1' (ratingClick)='ratingAddClick($event)' [readOnly]="user.administrador"></app-rating>
               </div>
             </div>
-            <div class="sep__error ic-close" [hidden]="!showErrorMessage">
+            <!-- <div class="sep__error ic-close" [hidden]="!showErrorMessage">
               <p>Todos los campos son requeridos!</p>
-            </div>
-            <div class="sep__error ic-close" [hidden]="errorMsg == null">
-              <p>{{ errorMsg }}</p>
+            </div> -->
+            <div class="sep__error ic-close">
+              <p [hidden]="errorMsg == null">{{ errorMsg }}</p>
             </div>            
           </div>
           <div class="card__data__content__btns">

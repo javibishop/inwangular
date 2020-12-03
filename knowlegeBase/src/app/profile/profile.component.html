@@ -1,25 +1,25 @@
 <div class="container">
-  <form id="contact" action="" method="post">
+  <form id="contact" action="" method="post" [hidden]="user == null">
     <h3>Perfil de cuenta</h3>
     <fieldset>
       <label>Nombre</label>
-      <input placeholder="Nombre" type="text" tabindex="1" required autofocus>
+      <input placeholder="Nombre" type="text" tabindex="1" [value]="user.nombre" required autofocus>
     </fieldset>
     <fieldset>
       <label>Apellido</label>
-      <input placeholder="Apellido" type="text" tabindex="2" required>
+      <input placeholder="Apellido" type="text" tabindex="2" [value]="user.apellido" required>
     </fieldset>
     <fieldset>
       <label>Edad</label>
-      <input placeholder="Edad" type="number" tabindex="3" required>
+      <input placeholder="Edad" type="number" tabindex="3" [value]="user.edad" required>
     </fieldset>
     <fieldset>
       <label>Recurso</label>
-      <input placeholder="Recurso" type="text" tabindex="4" required>
+      <input placeholder="Recurso" type="text" tabindex="4" [value]="user.codRecurso" required>
     </fieldset>
     <fieldset>
       <label>Cargo</label>
-      <input placeholder="Cargo" type="text" tabindex="5" required>
+      <input placeholder="Cargo" type="text" tabindex="5" [value]="user.cargo" required>
     </fieldset>
     <fieldset>
       <div class="row">
@@ -27,7 +27,7 @@
           <button type="button" class="btn btn-outline-primary"><i class="fa fa-times"></i></button>
         </div>
         <div class="col text-center">
-          <button type="button" class="btn btn-outline-primary"><i class="fa fa-check"></i></button>
+          <button type="button" class="btn btn-outline-primary" (click)="onSaveClick()"><i class="fa fa-check"></i></button>
         </div>
       </div>
     </fieldset>

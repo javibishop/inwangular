@@ -13,7 +13,7 @@ export class FlipCardComponent implements OnInit {
 
   isFlipped = false;
   isNewFlipped = false;
-  showErrorMessage = false;
+  // showErrorMessage = false;
   subscriptions = [];
   user;
   errorMsg = null;
@@ -39,9 +39,13 @@ export class FlipCardComponent implements OnInit {
 
   saveCard(e?) {
     if (!this.isValid()) {
-      this.showErrorMessage = true;
+    //  this.showErrorMessage = true;
+      this.errorMsg = 'Todos los campos son requeridos!';
       return;
     }
+    //this.showErrorMessage = false;
+    this.errorMsg = null;
+
     const objKnowledge = this.currentKnow as ConocimientoUsuario;
     this.subscriptions.push(this.userService.addConocimiento(this.user.id, objKnowledge).subscribe(
       () => {
@@ -81,16 +85,17 @@ export class FlipCardComponent implements OnInit {
       this.isNewFlipped = !this.isNewFlipped;
       this.currentKnow = {
         'conocimiento': { 'nombre': '' },
-        'nivel': '0',
+        'nivel': 0,
       };
     }
-    this.showErrorMessage = false;
+   // this.showErrorMessage = false;
+    this.errorMsg = null;
   }
 
   isValid() {
     return (
       this.currentKnow.conocimiento.nombre &&
-      this.currentKnow.nivel
+      this.currentKnow.nivel >= 0
     );
   }
 
@@ -112,7 +117,7 @@ export class FlipCardComponent implements OnInit {
 
     const objKnowledge = new ConocimientoUsuario();
     objKnowledge.conocimiento.nombre = this.knowledges[i].conocimiento.nombre;
-    objKnowledge.nivel = this.knowledges[i].nivel;
+    objKnowledge.nivel = Number(this.knowledges[i].nivel);
     this.subscriptions.push(this.userService.editConocimiento(this.user.id, objKnowledge).subscribe());
   }
 }
