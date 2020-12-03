@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./generic-cards.component.scss']
 })
 export class GenericCardsComponent implements OnInit {
-  // @Input() model: any = '';
 
   @Input() knowledgesList: any = [];
   @Output() changeEmitter: EventEmitter<any> = new EventEmitter<any>();
@@ -15,9 +14,8 @@ export class GenericCardsComponent implements OnInit {
   isFlipped = false;
   isInputVisible = false;
   showModal = false;
-  // insuredPeople = [];
   knowledges = [];
-  idInsuredToDelete: any;
+  // idInsuredToDelete: any;
 
   constructor() {}
 
@@ -25,19 +23,19 @@ export class GenericCardsComponent implements OnInit {
     this.knowledges = this.knowledgesList;
   }
 
-  changeInsuredPeople($event){
-    this.knowledges = $event;
-    this.changeEmitter.emit(this.knowledges);
-  }
+  // changeInsuredPeople($event){
+  //   this.knowledges = $event;
+  //   this.changeEmitter.emit(this.knowledges);
+  // }
 
-  showModalDelete(value: any) {
-    this.idInsuredToDelete = value;
-    this.showModal = true;
-  }
+  // showModalDelete(value: any) {
+  //   this.idInsuredToDelete = value;
+  //   this.showModal = true;
+  // }
 
   deleteCard(id?) {
     const idx = this.knowledges.findIndex((elem) => {
-      return elem.id === id; //this.idInsuredToDelete;
+      return elem.id === id;
     });
     this.knowledges.splice(idx, 1);
     this.changeEmitter.emit(this.knowledges);
@@ -47,5 +45,9 @@ export class GenericCardsComponent implements OnInit {
   receivedOutput(id) {
     this.deleteCard(id);
     this.objEmit.emit(id);
+  }
+
+  removeCard(){ //(sender) {
+
   }
 }

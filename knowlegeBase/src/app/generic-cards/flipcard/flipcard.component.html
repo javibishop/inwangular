@@ -53,7 +53,7 @@
       </div>
     </div>
   </div>
-  <div class="card " *ngFor="let know of knowledges, let i = index">
+  <div class="card" *ngFor="let know of knowledges, let i = index">
     <div class="card__flip" [ngClass]="{'card__flip--flipped': know.flipped}">
       <a class="card__add">
         <div class="card__static">
@@ -83,7 +83,7 @@
                 </div>
               </div>
             </a> -->
-            <a class="card__data__content__btns__link" (click)="removeCard(know)">
+            <a class="card__data__content__btns__link" (click)="showModalDelete(true, know)">
               <div class="row" *ngIf="user && !user.administrador">
                 <div class="col text-center">
                   <button type="button" class="btn btn-outline-primary"><i class="fa fa-trash"></i></button>
@@ -129,3 +129,16 @@
     </div>
   </div>
 </div>
+
+<div class="modal" *ngIf="showModal">
+  <div class="modal__delete" id="modalDelete">
+    <div class="modal__container">
+      <div class="ic-modal-close" (click)="showModalDelete(false)"></div>
+      <h2 class="modal__title">¿Estás seguro que quieres eliminar al integrante seleccionado?</h2>
+      <a class="modal__btn" (click)="removeCard()">Confirmar</a>
+    </div>
+  </div>
+</div>
+
+<p *ngIf="showModal"> Hola mundo </p>
+

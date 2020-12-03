@@ -19,6 +19,7 @@ import { GenericCardsComponent } from './generic-cards/generic-cards.component';
 import { FlipCardComponent } from './generic-cards/flipcard/flipcard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StarRatingComponent } from './_components/star-rating/star-rating.component';
+import { KnowledgeResolver } from './resolvers/knowledge.resolver';
 
 
 @NgModule({

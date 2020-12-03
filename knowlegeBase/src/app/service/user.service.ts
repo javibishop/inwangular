@@ -47,10 +47,10 @@ export class UserService {
     }
 
     removeConocimiento(id: string, knowledge: ConocimientoUsuario){
-      return this.http.put(`${this.url}/removeKnowledge/${id}` + id, knowledge);
+      return this.http.put(`${this.url}/removeKnowledge/${id}`, knowledge);
     }
 
     editConocimiento(id: string, knowledge: ConocimientoUsuario){
-      return this.http.put(`${this.url}/editKnowledge/${id}` + id, knowledge);
+      return this.http.put(`${this.url}/editKnowledge/${id}`, knowledge);
     }
 }

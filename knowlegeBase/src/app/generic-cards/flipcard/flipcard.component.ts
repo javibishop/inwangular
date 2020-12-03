@@ -17,6 +17,7 @@ export class FlipCardComponent implements OnInit {
   subscriptions = [];
   user;
   errorMsg = null;
+  showModal = false;
 
   currentKnow: any = {};
 
@@ -34,6 +35,7 @@ export class FlipCardComponent implements OnInit {
         this.knowledges[i].id = gen.next().value;
       }
     }
+
     this.user = JSON.parse(localStorage.getItem('currentUser')) as any;
   }
 
@@ -68,12 +70,12 @@ export class FlipCardComponent implements OnInit {
     ));
   }
 
-  removeCard(sender) {
+  removeCard(){ //(sender) {
     const objKnowledge = new ConocimientoUsuario();
-    objKnowledge.conocimiento.nombre = sender.conocimiento.nombre;
-    objKnowledge.nivel = sender.nivel;
+    objKnowledge.conocimiento.nombre = this.currentKnow.conocimiento.nombre;
+    objKnowledge.nivel = this.currentKnow.nivel;
     this.subscriptions.push(this.userService.removeConocimiento(this.user.id, objKnowledge).subscribe());
-    this.objEmit.emit(sender.id);
+    this.objEmit.emit(this.currentKnow.id);
   }
 
   flipCard(e?) {
@@ -120,6 +122,11 @@ export class FlipCardComponent implements OnInit {
     objKnowledge.nivel = Number(this.knowledges[i].nivel);
     this.subscriptions.push(this.userService.editConocimiento(this.user.id, objKnowledge).subscribe());
   }
+
+  showModalDelete(ok: boolean, know?: ConocimientoUsuario) {​​
+    this.showModal = ok;
+    this.currentKnow = know;
+  }​​
 }
 
 function* idMaker() {
