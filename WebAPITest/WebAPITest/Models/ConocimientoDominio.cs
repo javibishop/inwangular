@@ -1,10 +1,11 @@
-using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Collections;
 
 namespace WebAPITest.Models
 {
   public class ConocimientoDominio
   {
+
     [BsonElement("Nombre")]
     public string Nombre { get; set; }
 
@@ -18,4 +19,5 @@ namespace WebAPITest.Models
     public string Pasos { get; set; }
 
   }
+
 }

@@ -33,5 +33,6 @@ namespace WebAPITest.Models
 
     public bool Administrador { get; set; }
 
+    
   }
 }

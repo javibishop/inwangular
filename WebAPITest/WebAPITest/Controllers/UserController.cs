@@ -52,7 +52,6 @@ namespace WebAPITest.Controllers
     }
 
     // PUT: api/User/5
-    //[Route("updateuser/{id}")]
     [HttpPut("{id}")]
     public void Put(string id, [FromBody] Usuario value)
     {
@@ -73,8 +72,6 @@ namespace WebAPITest.Controllers
       return _userService.Authentication(objUser.nombreUsuario, objUser.password);
     }
 
- 
-
     // PUT: api/User/5
     [Route("addKnowledge/{id}")]
     [HttpPost]
@@ -90,8 +87,23 @@ namespace WebAPITest.Controllers
       _userService.Update(id, user);
     }
 
+   [Route("addKnowledge/{id}")]
+    [HttpPut]
+    public void Put(string id, [FromBody] ConocimientoUsuario conocimiento)
+    {
+      Usuario user = this._userService.Get(id);
+
+      if(user.Conocimientos == null)
+      {
+        user.Conocimientos = new List<ConocimientoUsuario>() as IEnumerable<ConocimientoUsuario>;
+      }
+      user.Conocimientos = user.Conocimientos.Append<ConocimientoUsuario>(conocimiento);
+      _userService.Update(id, user);
+    }
+
+    // PUT: api/User/5
     [Route("removeKnowledge/{id}")]
-    [HttpDelete]
+    [HttpPut]
     public void DeleteConocimiento(string id, [FromBody] ConocimientoUsuario conocimiento)
     {
       Usuario user = this._userService.Get(id);
@@ -101,7 +113,7 @@ namespace WebAPITest.Controllers
       _userService.Update(id, user);
     }
 
-    // PUT: api/User/editKnowledge/5
+    // PUT: api/User/5
     [Route("editKnowledge/{id}")]
     [HttpPut]
     public void EditConocimiento(string id, [FromBody] ConocimientoUsuario conocimiento)
@@ -115,5 +127,4 @@ namespace WebAPITest.Controllers
       _userService.Update(id, user);
     }
   }
-
 }
