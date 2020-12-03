@@ -5,10 +5,6 @@ namespace WebAPITest.Models
 {
   public class ConocimientoDominio
   {
-    //[BsonId]
-    //[BsonRepresentation(BsonType.ObjectId)]
-    //public string Id { get; set; }
-
     [BsonElement("Nombre")]
     public string Nombre { get; set; }
 

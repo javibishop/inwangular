@@ -18,14 +18,14 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params.id;
-    this.subscriptions.push(this.userService.getById(id).subscribe( r => {
-      this.user = r as User;
-    }));
+    if(id !== null && id !== ''){
+      this.subscriptions.push(this.userService.getById(id).subscribe( r => {
+        this.user = r as User;
+      }));
+    }
   }
 
   onSaveClick(){
     this.subscriptions.push(this.userService.update(this.user).subscribe());
   }
-
-
 }

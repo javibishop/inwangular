@@ -1,25 +1,25 @@
 <div class="container">
-  <form id="contact" action="" method="post" [hidden]="user == null">
+  <form id="contact" action="" method="post" *ngIf ="user !== null">
     <h3>Perfil de cuenta</h3>
     <fieldset>
       <label>Nombre</label>
-      <input placeholder="Nombre" type="text" tabindex="1" [value]="user.nombre" required autofocus>
+      <input placeholder="Nombre" type="text" tabindex="1" name='user' [(ngModel)]="user.nombre" required autofocus>
     </fieldset>
     <fieldset>
       <label>Apellido</label>
-      <input placeholder="Apellido" type="text" tabindex="2" [value]="user.apellido" required>
+      <input placeholder="Apellido" type="text" tabindex="2" name='apellido' [(ngModel)]="user.apellido" required>
     </fieldset>
     <fieldset>
       <label>Edad</label>
-      <input placeholder="Edad" type="number" tabindex="3" [value]="user.edad" required>
+      <input placeholder="Edad" type="number" tabindex="3" name='edad' [(ngModel)]="user.edad" required>
     </fieldset>
     <fieldset>
       <label>Recurso</label>
-      <input placeholder="Recurso" type="text" tabindex="4" [value]="user.codRecurso" required>
+      <input placeholder="Recurso" type="text" tabindex="4" name='codRecurso' [(ngModel)]="user.codRecurso" required>
     </fieldset>
     <fieldset>
       <label>Cargo</label>
-      <input placeholder="Cargo" type="text" tabindex="5" [value]="user.cargo" required>
+      <input placeholder="Cargo" type="text" tabindex="5" name='cargo' [(ngModel)]="user.cargo" required>
     </fieldset>
     <fieldset>
       <div class="row">
