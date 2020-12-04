@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-generic-cards',
@@ -15,39 +16,39 @@ export class GenericCardsComponent implements OnInit {
   isInputVisible = false;
   showModal = false;
   knowledges = [];
-  // idInsuredToDelete: any;
+  knowToDelete: any;
+  subscriptions = [];
+  user;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.knowledges = this.knowledgesList;
+
+    this.user = JSON.parse(localStorage.getItem('currentUser')) as any;
   }
 
-  // changeInsuredPeople($event){
-  //   this.knowledges = $event;
-  //   this.changeEmitter.emit(this.knowledges);
-  // }
+  changeKnow($event) {
+    this.knowledges = $event;
+    this.changeEmitter.emit(this.knowledges);
+  }
 
-  // showModalDelete(value: any) {
-  //   this.idInsuredToDelete = value;
-  //   this.showModal = true;
-  // }
+  showModalDelete(value: any) {
+    this.knowToDelete = value;
+    this.showModal = true;
+  }
 
   deleteCard(id?) {
     const idx = this.knowledges.findIndex((elem) => {
       return elem.id === id;
     });
     this.knowledges.splice(idx, 1);
-    this.changeEmitter.emit(this.knowledges);
     this.showModal = false;
   }
 
-  receivedOutput(id) {
-    this.deleteCard(id);
-    this.objEmit.emit(id);
-  }
-
-  removeCard(){ //(sender) {
-
+  removeCard() {
+    this.subscriptions.push(this.userService.removeConocimiento(this.user.id, this.knowToDelete).subscribe());
+    this.deleteCard(this.knowToDelete.id);
+    this.objEmit.emit(this.knowToDelete.id);
   }
 }

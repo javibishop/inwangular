@@ -3,7 +3,7 @@
     <div class="card__flip" [ngClass]="{'card__flip--flipped': isNewFlipped}">
       <a class="card__add card__add__first" (click)="flipCard()" *ngIf="!isFlipped">
         <h3 class="card__title">Agregar Conocimiento</h3>
-        <div class="card__add__plus ic-add-plus"></div>
+        <div class="card__add__plus"><i class="fa fa-plus fa-3x"></i></div>
       </a>
       <div class="card__data" *ngIf="isNewFlipped">
         <div class="card__data__content">
@@ -83,7 +83,7 @@
                 </div>
               </div>
             </a> -->
-            <a class="card__data__content__btns__link" (click)="showModalDelete(true, know)">
+            <a class="card__data__content__btns__link" (click)="deleteModal(know)">
               <div class="row" *ngIf="user && !user.administrador">
                 <div class="col text-center">
                   <button type="button" class="btn btn-outline-primary"><i class="fa fa-trash"></i></button>
@@ -129,16 +129,4 @@
     </div>
   </div>
 </div>
-
-<div class="modal" *ngIf="showModal">
-  <div class="modal__delete" id="modalDelete">
-    <div class="modal__container">
-      <div class="ic-modal-close" (click)="showModalDelete(false)"></div>
-      <h2 class="modal__title">¿Estás seguro que quieres eliminar al integrante seleccionado?</h2>
-      <a class="modal__btn" (click)="removeCard()">Confirmar</a>
-    </div>
-  </div>
-</div>
-
-<p *ngIf="showModal"> Hola mundo </p>
 

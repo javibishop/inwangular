@@ -10,10 +10,11 @@ import { ConocimientoUsuario } from 'src/app/_models/ConocimientoUsuario';
 })
 export class FlipCardComponent implements OnInit {
   @Output() objEmit: EventEmitter<any> = new EventEmitter();
+  @Output() deleteKnowEmitter = new EventEmitter();
+  @Output() changeKnowEmitter = new EventEmitter();
 
   isFlipped = false;
   isNewFlipped = false;
-  // showErrorMessage = false;
   subscriptions = [];
   user;
   errorMsg = null;
@@ -41,11 +42,9 @@ export class FlipCardComponent implements OnInit {
 
   saveCard(e?) {
     if (!this.isValid()) {
-    //  this.showErrorMessage = true;
       this.errorMsg = 'Todos los campos son requeridos!';
       return;
     }
-    //this.showErrorMessage = false;
     this.errorMsg = null;
 
     const objKnowledge = this.currentKnow as ConocimientoUsuario;
@@ -54,6 +53,8 @@ export class FlipCardComponent implements OnInit {
         if (e >= 0) {
           this.knowledges[e] = this.currentKnow;
         } else {
+        this.currentKnow.flipped = false;
+        this.currentKnow.id = gen.next().value;
           if (this.knowledges !== undefined && this.knowledges !== null) {
             this.knowledges = [...this.knowledges, this.currentKnow];
           } else {
@@ -61,6 +62,7 @@ export class FlipCardComponent implements OnInit {
             this.knowledges.push(this.currentKnow);
           }
           this.flipCard(e);
+          this.changeKnowEmitter.emit(this.knowledges);
           this.errorMsg = null;
         }
       },
@@ -70,7 +72,7 @@ export class FlipCardComponent implements OnInit {
     ));
   }
 
-  removeCard(){ //(sender) {
+  removeCard() {
     const objKnowledge = new ConocimientoUsuario();
     objKnowledge.conocimiento.nombre = this.currentKnow.conocimiento.nombre;
     objKnowledge.nivel = this.currentKnow.nivel;
@@ -90,7 +92,6 @@ export class FlipCardComponent implements OnInit {
         'nivel': 0,
       };
     }
-   // this.showErrorMessage = false;
     this.errorMsg = null;
   }
 
@@ -127,6 +128,10 @@ export class FlipCardComponent implements OnInit {
     this.showModal = ok;
     this.currentKnow = know;
   }​​
+
+  deleteModal(objKnow) {
+    this.deleteKnowEmitter.emit(objKnow);
+  }
 }
 
 function* idMaker() {

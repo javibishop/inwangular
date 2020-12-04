@@ -34,4 +34,8 @@ export class KnowledgeComponent implements OnInit, OnDestroy {
       this.knowledges = r as [ConocimientoUsuario];
     }));
   }
+
+  changeKnow($event) {
+    this.knowledges = $event;
+  }
 }

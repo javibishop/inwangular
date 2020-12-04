@@ -1,6 +1,9 @@
 
 <h2>Conocimientos</h2>
 <div>
-  <app-generic-cards [knowledgesList]="knowledges" (objEmit)="receivedOutput($event)">
+  <app-generic-cards 
+    [knowledgesList]="knowledges" 
+    (changeKnowEmitter)="changeKnow($event)"
+    (objEmit)="receivedOutput($event)">
   </app-generic-cards>
 </div>

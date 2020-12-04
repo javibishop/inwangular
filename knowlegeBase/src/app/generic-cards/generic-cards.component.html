@@ -1,24 +1,18 @@
 
 <section class="gl">
-  <flip-card [knowledges]="knowledges" (objEmit)="receivedOutput($event)"></flip-card>
+  <flip-card 
+    [knowledges]="knowledges" 
+     (changeKnowEmitter)="changeKnow($event)"
+     (deleteKnowEmitter)="showModalDelete($event)">
+  </flip-card>
+</section>
 
-  <!-- <div class="rfc-modal" [ngClass]="{'rfc-modal--show': showModal}">
-    <div class="rfc-modal__content">
-      <a class="rfc-modal__content__close ic-modal-close" (click)="showModal = false;"></a>
-      <p class="rfc-modal__content__text">¿Estás seguro que quieres eliminar al integrante seleccionado?</p>
-      <div class="rfc-modal__content__btn">
-        <a class="rfc-modal__content__btn__link" (click)="deleteInsured()">Confirmar</a>
-      </div>
-    </div>
-  </div> -->
-
-  <div class="modal" *ngIf="showModal">
-    <div class="modal__delete" id="modalDelete">
-      <div class="modal__container">
-        <div class="ic-modal-close" (click)="showModal = false;"></div>
-        <h2 class="modal__title">¿Estás seguro que quieres eliminar al integrante seleccionado?</h2>
-        <a class="modal__btn" (click)="removeCard()">Confirmar</a>
-      </div>
+<div class="rfc-modal" *ngIf="showModal">
+  <div class="rfc-modal__content">
+    <a class="rfc-modal__content__close" (click)="showModal = false;">  <i class="fa fa-close"></i></a>
+    <p class="rfc-modal__content__text">¿Estás seguro que quieres eliminar al conocimiento?</p>
+    <div class="rfc-modal__content__btn">
+      <a class="rfc-modal__content__btn__link" (click)="removeCard()">Confirmar</a>
     </div>
   </div>
-</section>
+</div>
