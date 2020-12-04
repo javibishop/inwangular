@@ -124,11 +124,6 @@ export class FlipCardComponent implements OnInit {
     this.subscriptions.push(this.userService.editConocimiento(this.user.id, objKnowledge).subscribe());
   }
 
-  showModalDelete(ok: boolean, know?: ConocimientoUsuario) {​​
-    this.showModal = ok;
-    this.currentKnow = know;
-  }​​
-
   deleteModal(objKnow) {
     this.deleteKnowEmitter.emit(objKnow);
   }
