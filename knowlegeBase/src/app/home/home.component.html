@@ -1,36 +1,3 @@
-<!-- <h1>Hi {{currentUser.apellido}}, {{currentUser.nombre}}!</h1>
-
-<div *ngIf="currentUser.administrador">
-    <h3>All registered users:</h3>
-    <div class="container">
-        <table class="table" id="users">
-            <thead>
-                <tr>
-                    <th>Usuario</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Edad</th>
-                    <th>Cargo</th>
-                    <th>Recurso</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of users">
-                    <td>{{ user.nombreUsuario }}</td>
-                    <td>{{ user.nombre }}</td>
-                    <td>{{ user.apellido }}</td>
-                    <td>{{ user.edad }}</td>
-                    <td>{{ user.cargo }}</td>
-                    <td>{{ user.codRecurso }}</td>
-                    <td><a (click)="deleteUser(user.id)" class="text-danger">Delete</a></td>
-                    <td><a (click)="verConocimientos(user.id)" class="text-danger">Ver conocimientos</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div> -->
-
-
 <head>
     <title>Table V03</title>
     <meta charset="UTF-8">
@@ -58,7 +25,7 @@
                                 <th class="column100 column1" data-column="column5">Cargo</th>
                                 <th class="column100 column1" data-column="column6">Recurso</th>
                             </tr>
-                        </thead> 
+                        </thead>
                         <tbody>
                             <tr class="row100" *ngFor="let user of users">
                                 <td class="column100 column1" data-column="column1">{{ user.nombreUsuario }}</td>
@@ -69,15 +36,17 @@
                                 <td class="column100 column6" data-column="column6">{{ user.codRecurso }}</td>
                                 <td class="columnBtn column7" data-column="column7">
                                     <!-- <a (click)="deleteUser(user.id)" class="text-danger">Delete</a> -->
-                <div class="text-center">
-                  
-                                    <button type="button" title="Eliminar" class="btn btn-outline-primary" (click)="deleteUser(user.id)"><i class="fa fa-trash"></i></button>
-                </div>
-                                    
-                                    </td>
+                                    <div class="text-center">
+
+                                        <button type="button" title="Eliminar" class="btn btn-outline-primary"
+                                            (click)="deleteModal(user.id)"><i class="fa fa-trash"></i></button>
+                                    </div>
+
+                                </td>
                                 <td class="columnBtn column8" data-column="column8">
                                     <!-- <a (click)="verConocimientos(user.id)" class="text-danger">Ver conocimientos</a> -->
-                  <button type="button" title="Ver conocimientos" class="btn btn-outline-primary" (click)="verConocimientos(user.id)"><i class="fa fa-book"></i></button>
+                                    <button type="button" title="Ver conocimientos" class="btn btn-outline-primary"
+                                        (click)="verConocimientos(user.id)"><i class="fa fa-book"></i></button>
 
                                 </td>
                             </tr>
@@ -98,3 +67,14 @@
     <script src="vendor/select2/select2.min.js"></script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
+
+    <div class="rfc-modal" *ngIf="showModal">
+        <div class="rfc-modal__content">
+          <a class="rfc-modal__content__close" (click)="showModal = false;">  <i class="fa fa-close"></i></a>
+          <p class="rfc-modal__content__text">¿Estás seguro que quieres eliminar al usuario?</p>
+          <div class="rfc-modal__content__btn">
+            <a class="rfc-modal__content__btn__link" (click)="deleteUser()">Confirmar</a>
+          </div>
+        </div>
+      </div>
+      

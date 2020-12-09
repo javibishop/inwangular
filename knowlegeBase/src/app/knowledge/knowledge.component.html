@@ -1,5 +1,5 @@
 
-<h2>Conocimientos</h2>
+<h1 *ngIf="user != null">Conocimientos de {{ user.nombre }}</h1>
 <div>
   <app-generic-cards 
     [knowledgesList]="knowledges" 

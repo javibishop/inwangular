@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     users: User[] = null;
 
     list: any = {};
+    showModal = false;
+    idUserToDelete= null;
 
     constructor(
         private userService: UserService,
@@ -43,10 +45,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.currentUserSubscription.unsubscribe();
     }
 
-    deleteUser(id: string) {
-        this.userService.delete(id).pipe(first()).subscribe(() => {
+    deleteUser() {
+        this.userService.delete(this.idUserToDelete).pipe(first()).subscribe(() => {
             this.loadAllUsers();
         });
+        this.idUserToDelete = null;
+        this.showModal = false;
     }
 
     private loadAllUsers() {
@@ -57,5 +61,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     verConocimientos(id: string) {
         this.router.navigate(['/knowledge', id​​]);
+    }
+
+    deleteModal(id) {
+        this.showModal = true;
+        this.idUserToDelete = id;
     }
 }

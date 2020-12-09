@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../service/user.service';
+import { User } from '../_models';
 import { ConocimientoUsuario } from '../_models/ConocimientoUsuario';
 
 @Component({
@@ -13,6 +14,7 @@ export class KnowledgeComponent implements OnInit, OnDestroy {
   knowledges: any;
   subscriptions = [];
   list: any = {};
+  user;
 
   constructor(private activatedRoute: ActivatedRoute,
               private userService: UserService ) {
@@ -26,6 +28,11 @@ export class KnowledgeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.knowledges = this.activatedRoute.snapshot.data.knows;
+    const id = this.activatedRoute.snapshot.params.id;
+
+    this.subscriptions.push(this.userService.getById(id).subscribe( u => {
+      this.user = u as User;
+    }));
   }
 
   receivedOutput(value) {
