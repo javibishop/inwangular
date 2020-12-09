@@ -23,13 +23,10 @@
             <div class="card__data__actions">
               <p class="card__data__actions__title">Nivel</p>
               <div class="card__data__actions__wrapper">
-                <!-- <input type="number" min="1" max="10" (change)="onChangeNivel($event.target.value)" /> -->
                 <app-rating [rating]='0' [itemId]='1' (ratingClick)='ratingAddClick($event)' [readOnly]="user.administrador"></app-rating>
               </div>
             </div>
-            <!-- <div class="sep__error ic-close" [hidden]="!showErrorMessage">
-              <p>Todos los campos son requeridos!</p>
-            </div> -->
+  
             <div class="sep__error ic-close">
               <p [hidden]="errorMsg == null">{{ errorMsg }}</p>
             </div>            
@@ -61,7 +58,6 @@
         <div class="card__static">
           <h3 class="card__title">{{know.conocimiento.nombre}}</h3>
           <p class="card__static__text">Nivel</p>
-          <!-- <h4 class="card__static__age">{{know.nivel}}</h4> -->
           <div class="card__data__actions">
             <div class="card__data__actions__wrapper">
               <div id="divRanking">
@@ -75,59 +71,17 @@
             <a *ngIf="know['ELIMINAR'] === 'true'" class="ic-delete" (click)="deleteModal(i)"></a>
           </div>
 
-          <div class="card__data__content__btns">
-            <!-- <a class="card__data__content__btns__link" (click)="editCard(know)">
+          <div class="card__data__content__btns" [hidden]="user && user.administrador">
+            <a class="card__data__content__btns__linkDelete" (click)="deleteModal(know)">
               <div class="row" *ngIf="user && !user.administrador">
                 <div class="col text-center">
-                  <button type="button" class="btn btn-outline-primary">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </div>
-            </a> -->
-            <a class="card__data__content__btns__link" (click)="deleteModal(know)">
-              <div class="row" *ngIf="user && !user.administrador">
-                <div class="col text-center">
-                  <button type="button" class="btn btn-outline-primary"><i class="fa fa-trash"></i></button>
+                  <button type="button" title="Eliminar" class="btn btn-outline-primary"><i class="fa fa-trash"></i></button>
                 </div>
               </div>
             </a>
           </div>
         </div>
       </a>
-      <!-- <div class="card__data" *ngIf="know.editable">
-        <div class="card__data__content">
-          <div class="card__data__content__wrapper">
-
-            <div class="card__data__actions">
-              <p class="card__data__actions__title">Tecnología</p>
-              <div class="card__data__actions__wrapper">
-                <select name="tecnologias" (change)="onChangeTecnologia($event.target.value)">
-                  <option [value]="item.description" *ngFor="let item of tecnologias">{{item.description}}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="card__data__actions">
-              <p class="card__data__actions__title">Nivel</p>
-              <div class="card__data__actions__wrapper">
-                <input type="number" min="1" max="10" (change)="onChangeNivel($event.target.value)" />
-              </div>
-            </div>
-
-            <div class="sep__error ic-close" [hidden]="!showErrorMessage">
-              <p>Todos los campos son requeridos!</p>
-            </div>
-          </div>
-          <div class="card__data__content__btns">
-            <a class="card__data__content__btns__link ic-modal-close" (click)="flipCard(i)"></a>
-            <a class="card__data__content__btns__link ic-add-ok" (click)="saveCard(i)"></a>
-          </div>
-
-        </div>
-
-      </div> -->
-
     </div>
   </div>
 </div>

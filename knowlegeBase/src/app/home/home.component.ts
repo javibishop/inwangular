@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, Inject, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, Inject, ChangeDetectorRef, HostListener, ElementRef, Renderer, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -8,15 +8,17 @@ import { UserService } from '../service/user.service';
 import { User } from '../_models';
 import { AuthenticationService } from '../_services';
 
-@Component({ templateUrl: 'home.component.html',
-             styleUrls: ['home.component.scss',
-                         './table/vendor/bootstrap/css/bootstrap.min.css',
-                         './table/fonts/font-awesome-4.7.0/css/font-awesome.min.css',
-                        './table/vendor/animate/animate.css',
-                        './table/vendor/select2/select2.min.css',
-                        './table/vendor/perfect-scrollbar/perfect-scrollbar.css',
-                        './table/css/util.css',
-                        './table/css/main.css']})
+@Component({
+    templateUrl: 'home.component.html',
+    styleUrls: ['home.component.scss',
+        './table/vendor/bootstrap/css/bootstrap.min.css',
+        './table/fonts/font-awesome-4.7.0/css/font-awesome.min.css',
+        './table/vendor/animate/animate.css',
+        './table/vendor/select2/select2.min.css',
+        './table/vendor/perfect-scrollbar/perfect-scrollbar.css',
+        './table/css/util.css',
+        './table/css/main.css']
+})
 export class HomeComponent implements OnInit, OnDestroy {
     currentUser: User;
     currentUserSubscription: Subscription;
@@ -24,12 +26,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     list: any = {};
     showModal = false;
-    idUserToDelete= null;
+    idUserToDelete = null;
 
     constructor(
         private userService: UserService,
         private router: Router,
-        private stateUserService: StateUserService
+        private stateUserService: StateUserService,
+        private element: ElementRef,
+        private renderer: Renderer2
     ) {
         this.currentUserSubscription = this.stateUserService.currentUserSubject.subscribe(user => {
             this.currentUser = user;
@@ -60,11 +64,29 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     verConocimientos(id: string) {
-        this.router.navigate(['/knowledge', id​​]);
+        this.router.navigate(['/knowledge', id]);
     }
 
     deleteModal(id) {
         this.showModal = true;
         this.idUserToDelete = id;
+    }
+
+    filter(val) {
+        var table, rows, i;
+        table = document.getElementById("usersTable");
+        rows = table.getElementsByTagName("tr");
+        for (i = 1; i < rows.length; i++) {
+            let dataRow = [];
+            dataRow = [].slice.call(table.rows[i].cells);
+            const res = dataRow.filter(
+                e => e.innerHTML.toLowerCase().includes(val)
+                );
+            if (res.length == 0){
+                this.renderer.setStyle(rows[i], 'display', "none");
+            }else{                
+                this.renderer.setStyle(rows[i], 'display', "table-row");
+            }
+        } 
     }
 }

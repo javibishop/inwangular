@@ -5,17 +5,21 @@
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="table/images/icons/favicon.ico" />
     <!--===============================================================================================-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
 
+          
+    <input class="form-control" id="inpFiler" type="text" placeholder="Search.." (keyup)="filter($event.target.value)">
+      
     <h1>Hi {{currentUser.apellido}}, {{currentUser.nombre}}!</h1>
     <div class="limiter" *ngIf="currentUser.administrador && users">
         <div class="container-table100">
             <div class="wrap-table100">
                 <h3>All registered users:</h3>
                 <div class="table100 ver1 m-b-110">
-                    <table data-vertable="ver1">
+                    <table data-vertable="ver1" id="usersTable">
                         <thead>
                             <tr class="row100 head">
                                 <th class="column100 column1" data-column="column1">Usuario</th>
@@ -24,6 +28,8 @@
                                 <th class="column100 column1" data-column="column4">Edad</th>
                                 <th class="column100 column1" data-column="column5">Cargo</th>
                                 <th class="column100 column1" data-column="column6">Recurso</th>
+                                <th class="column100 column1" data-column="column7"></th>
+                                <th class="column100 column1" data-column="column8"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,18 +41,15 @@
                                 <td class="column100 column5" data-column="column5">{{ user.cargo }}</td>
                                 <td class="column100 column6" data-column="column6">{{ user.codRecurso }}</td>
                                 <td class="columnBtn column7" data-column="column7">
-                                    <!-- <a (click)="deleteUser(user.id)" class="text-danger">Delete</a> -->
-                                    <div class="text-center">
+                                    <button type="button" title="Ver conocimientos" class="btn btn-outline-primary"
+                                        (click)="verConocimientos(user.id)"><i class="fa fa-book"></i></button>
 
+                                </td>                                
+                                <td class="columnBtn column8" data-column="column8">
+                                    <div class="text-center">
                                         <button type="button" title="Eliminar" class="btn btn-outline-primary"
                                             (click)="deleteModal(user.id)"><i class="fa fa-trash"></i></button>
                                     </div>
-
-                                </td>
-                                <td class="columnBtn column8" data-column="column8">
-                                    <!-- <a (click)="verConocimientos(user.id)" class="text-danger">Ver conocimientos</a> -->
-                                    <button type="button" title="Ver conocimientos" class="btn btn-outline-primary"
-                                        (click)="verConocimientos(user.id)"><i class="fa fa-book"></i></button>
 
                                 </td>
                             </tr>
@@ -77,4 +80,3 @@
           </div>
         </div>
       </div>
-      
