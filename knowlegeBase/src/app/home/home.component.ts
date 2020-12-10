@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         rows = table.getElementsByTagName("tr");
         for (i = 1; i < rows.length; i++) {
             let dataRow = [];
-            dataRow = [].slice.call(table.rows[i].cells);
+            dataRow = ([].slice.call(table.rows[i].cells)).slice(0,table.rows[i].cells.length-2);
             const res = dataRow.filter(
                 e => e.innerHTML.toLowerCase().includes(val)
                 );
