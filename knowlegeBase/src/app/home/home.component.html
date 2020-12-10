@@ -14,7 +14,7 @@
     <div class="limiter" *ngIf="currentUser.administrador && users">
         <div class="container-table100">
             <div class="wrap-table100">
-                <h3>Usuarios registrados:</h3>
+                <h3 style="padding-bottom:10px">Usuarios registrados:</h3>
                 <input class="form-control" id="inpFiler" type="text" placeholder="Search.." (keyup)="filter($event.target.value)">
                 <div class="table100 ver1 m-b-25">
                     <table data-vertable="ver1" id="usersTable">
