@@ -3,20 +3,16 @@
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Inicio</a>
         <a class="nav-item nav-link" routerLink="/profile/{{ currentUser.id }}">Perfil</a>
-        <a class="nav-item nav-link" routerLink="/knowledge/{{ currentUser.id }}" *ngIf="currentUser && !currentUser.administrador">Conocimientos</a>
+        <a class="nav-item nav-link" routerLink="/knowledge/{{ currentUser.id }}"
+            *ngIf="currentUser && !currentUser.administrador">Conocimientos</a>
         <a class="nav-item nav-link" (click)="logout()">Salir</a>
     </div>
 </nav>
 
 <!-- main app container -->
 <div>
-<div class="jumbotron">
-    <!-- <div class="container"> -->
-        <!-- <div class="row"> -->
-            <!-- <div class="col-sm-3 offset-sm-3"> -->
-                <alert></alert>
-                <router-outlet></router-outlet>
-            <!-- </div> -->
-        <!-- </div> -->
+    <div class="jumbotron">
+        <alert></alert>
+        <router-outlet></router-outlet>
     </div>
 </div>
