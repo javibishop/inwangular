@@ -98,7 +98,7 @@ iframe {
 
 .container-table100 {
   width: 100%;
-  min-height: 100vh;
+  min-height: 50vh;
   background: #d1d1d1;
 
   display: -webkit-box;
@@ -140,7 +140,17 @@ th, td {
 
 .column100.column1 {
   width: 265px;
-  padding-left: 42px;
+  padding-left: 20px;
+}
+
+.column100.thBtn {
+  width: 58px;
+  padding-left: 24px;
+}
+
+.column100.thAngosto {
+  width: 58px;
+  padding-left: 20px;
 }
 
 .row100.head th {

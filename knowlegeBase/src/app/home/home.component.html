@@ -10,26 +10,24 @@
 
 <body>
 
-          
-    <input class="form-control" id="inpFiler" type="text" placeholder="Search.." (keyup)="filter($event.target.value)">
-      
     <h1>Hi {{currentUser.apellido}}, {{currentUser.nombre}}!</h1>
     <div class="limiter" *ngIf="currentUser.administrador && users">
         <div class="container-table100">
             <div class="wrap-table100">
                 <h3>All registered users:</h3>
-                <div class="table100 ver1 m-b-110">
+                <input class="form-control" id="inpFiler" type="text" placeholder="Search.." (keyup)="filter($event.target.value)">
+                <div class="table100 ver1 m-b-25">
                     <table data-vertable="ver1" id="usersTable">
                         <thead>
                             <tr class="row100 head">
                                 <th class="column100 column1" data-column="column1">Usuario</th>
                                 <th class="column100 column1" data-column="column2">Nombre</th>
                                 <th class="column100 column1" data-column="column3">Apellido</th>
-                                <th class="column100 column1" data-column="column4">Edad</th>
+                                <th class="column100 thAngosto" data-column="column4">Edad</th>
                                 <th class="column100 column1" data-column="column5">Cargo</th>
-                                <th class="column100 column1" data-column="column6">Recurso</th>
-                                <th class="column100 column1" data-column="column7"></th>
-                                <th class="column100 column1" data-column="column8"></th>
+                                <th class="column100 thAngosto" data-column="column6">Recurso</th>
+                                <th class="column100 thBtn" data-column="column7"></th>
+                                <th class="column100 thBtn" data-column="column8"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,7 +42,7 @@
                                     <button type="button" title="Ver conocimientos" class="btn btn-outline-primary"
                                         (click)="verConocimientos(user.id)"><i class="fa fa-book"></i></button>
 
-                                </td>                                
+                                </td>
                                 <td class="columnBtn column8" data-column="column8">
                                     <div class="text-center">
                                         <button type="button" title="Eliminar" class="btn btn-outline-primary"
@@ -73,10 +71,10 @@
 
     <div class="rfc-modal" *ngIf="showModal">
         <div class="rfc-modal__content">
-          <a class="rfc-modal__content__close" (click)="showModal = false;">  <i class="fa fa-close"></i></a>
-          <p class="rfc-modal__content__text">¿Estás seguro que quieres eliminar al usuario?</p>
-          <div class="rfc-modal__content__btn">
-            <a class="rfc-modal__content__btn__link" (click)="deleteUser()">Confirmar</a>
-          </div>
+            <a class="rfc-modal__content__close" (click)="showModal = false;"> <i class="fa fa-close"></i></a>
+            <p class="rfc-modal__content__text">¿Estás seguro que quieres eliminar al usuario?</p>
+            <div class="rfc-modal__content__btn">
+                <a class="rfc-modal__content__btn__link" (click)="deleteUser()">Confirmar</a>
+            </div>
         </div>
-      </div>
+    </div>
