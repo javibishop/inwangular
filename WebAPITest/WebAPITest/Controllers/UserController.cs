@@ -66,10 +66,21 @@ namespace WebAPITest.Controllers
       _userService.Remove(deletuser);
     }
 
+    /// <summary>
+    /// Con este metodo vamos a autenticar al usuario 
+    /// </summary>
+    /// <param name="objUser">Objeto usuario</param>
+    /// <returns></returns>
     [HttpPost ("authenticate")]
-    public Usuario Authentication([FromBody] DataAuthenticate objUser)
+    public IActionResult Authentication([FromBody] DataAuthenticate objUser)
     {
-      return _userService.Authentication(objUser.nombreUsuario, objUser.password);
+      var response = _userService.Authentication(objUser.nombreUsuario, objUser.password);
+      if (response == null)
+      {        
+        return BadRequest(new { message = "Username or password is incorrect" });
+      }
+      return Ok(response);
+      //return _userService.Authentication(objUser.nombreUsuario, objUser.password);
     }
 
     // PUT: api/User/5

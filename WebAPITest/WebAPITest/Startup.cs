@@ -8,6 +8,7 @@ using WebAPITest.Models;
 using WebAPITest.Services;
 using Microsoft.OpenApi.Models;
 using System;
+using WebAPITest.Helpers;
 
 namespace WebAPITest
 {
@@ -29,6 +30,8 @@ namespace WebAPITest
 
       services.AddSingleton<IUserDatabaseSettings>(sp => sp.GetRequiredService<IOptions<UserDatabaseSettings>>().Value);
       services.AddSingleton<UserService>();
+      // configure strongly typed settings object
+      services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
       services.AddCors();
       services.AddControllers();
 
@@ -45,7 +48,8 @@ namespace WebAPITest
     }
 
       //app.UseHttpsRedirection();
-
+      // custom jwt auth middleware
+      app.UseMiddleware<JwtMiddleware>();
       app.UseSwagger();
       app.UseSwaggerUI(c =>
       {
