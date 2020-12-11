@@ -8,6 +8,11 @@ using WebAPITest.Models;
 using WebAPITest.Services;
 using Microsoft.OpenApi.Models;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Net;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace WebAPITest
 {
@@ -39,7 +44,42 @@ namespace WebAPITest
   // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
   {
-    if (env.IsDevelopment())
+      app.UseExceptionHandler(a => a.Run(async context =>
+      {
+        var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
+        var exception = exceptionHandlerPathFeature.Error;
+
+        string result;
+
+        switch (exception)
+        {
+          case ValidationException validation:
+            context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            result = JsonConvert.SerializeObject(new { InternalMessage = validation.Message, BusinessMessage = validation.Message });
+            break;
+          case ArgumentException argument:
+            context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            result = JsonConvert.SerializeObject(new { InternalMessage = argument.Message });
+            break;
+          //case BusinessException business:
+          //  context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+          //  result = JsonConvert.SerializeObject(new { InternalMessage = business.Message, business.BusinessMessage });
+          //  break;
+          case UnauthorizedAccessException unauthorizedAccess:
+            context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+            result = string.Empty;
+            break;
+          default:
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            result = JsonConvert.SerializeObject(new { InternalMessage = exception.Message });
+            break;
+        }
+
+        context.Response.ContentType = "application/json";
+        await context.Response.WriteAsync(result);
+      }));
+
+      if (env.IsDevelopment())
     {
       app.UseDeveloperExceptionPage();
     }
@@ -52,6 +92,8 @@ namespace WebAPITest
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Doc INW test");
       });
 
+      //app.UseMiddleware<GoogleAuthorizeMiddleware>();
+      //app.UseMiddleware<FacebookAuthorizeMiddleware>();
 
       app.UseCors(x =>
     {
