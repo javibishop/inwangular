@@ -18,12 +18,12 @@ namespace WebAPITest.Services
     private readonly IMongoCollection<Usuario> _user;
     private readonly AppSettings _appSettings;
 
-    public UserService(IUserDatabaseSettings settings, IOptions<AppSettings> appSettings)
+    public UserService(IDatabaseSettings settings, IOptions<AppSettings> appSettings)
     {
       var client = new MongoClient(settings.ConnectionString);
       var database = client.GetDatabase(settings.DatabaseName);            
       _appSettings = appSettings.Value;      
-      _user = database.GetCollection<Usuario>(settings.UserCollectionName);
+      _user = database.GetCollection<Usuario>("User");
     }
 
     public List<Usuario> Get() =>

@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UserService } from 'src/app/service/user.service';
-import { User } from 'src/app/_models';
-import { ConocimientoUsuario } from 'src/app/_models/ConocimientoUsuario';
+import {Input, Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { KnowledgeService } from "src/app/service/knowledge.service";
+import { UserService } from "src/app/service/user.service";
+import { ConocimientoUsuario } from "src/app/_models/ConocimientoUsuario";
 
 @Component({
   selector: 'flip-card',
@@ -19,15 +19,16 @@ export class FlipCardComponent implements OnInit {
   user;
   errorMsg = null;
   showModal = false;
+  idNewCard: any;
 
   currentKnow: any = {};
 
   @Input() knowledges: any;
 
-  tecnologias = [{ description: 'C-Sharp' }, { description: 'NET.CORE' }, { description: 'Angular' },
-  { description: 'JavaScript' }, { description: 'Delphi' }, { description: 'Css' }];
+  tecnologias = [];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, 
+              private knowledgeService: KnowledgeService) { }
 
   ngOnInit() {
     if (this.knowledges !== undefined && this.knowledges !== null) {
@@ -36,6 +37,10 @@ export class FlipCardComponent implements OnInit {
         this.knowledges[i].id = gen.next().value;
       }
     }
+
+    this.knowledgeService.getAll().subscribe(data => {
+      this.tecnologias = data;
+    })
 
     this.user = JSON.parse(localStorage.getItem('currentUser')) as any;
   }
@@ -86,6 +91,7 @@ export class FlipCardComponent implements OnInit {
       this.knowledges[e].flipped = !this.knowledges[e].flipped;
       this.currentKnow = { ...this.knowledges[e] };
     } else {
+      this.idNewCard = gen.next().value;
       this.isNewFlipped = !this.isNewFlipped;
       this.currentKnow = {
         'conocimiento': { 'nombre': '' },
@@ -127,6 +133,21 @@ export class FlipCardComponent implements OnInit {
   deleteModal(objKnow) {
     this.deleteKnowEmitter.emit(objKnow);
   }
+
+  getTecnologies(): any[] {
+
+    let tecnology: any[] = [];
+
+    this.tecnologias.forEach(tecnologia=>{              
+      if (this.knowledges.find(x=> x.conocimiento.nombre == tecnologia.nombre) === undefined) {
+        if (tecnologia.nombre !== '') {
+          tecnology.push(tecnologia);
+        }
+      }        
+    })
+      
+    return tecnology;
+  }
 }
 
 function* idMaker() {
@@ -135,5 +156,3 @@ function* idMaker() {
     yield index++;
 }
 var gen = idMaker();
-
-

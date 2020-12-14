@@ -24,12 +24,15 @@
     <fieldset>
       <div class="row">
         <div class="col text-center">
-          <button type="button" class="btn btn-outline-primary"><i class="fa fa-times"></i></button>
+          <button type="button" class="btn btn-outline-primary" [routerLink]="['/']" routerLinkActive="router-link-active" ><i class="fa fa-times"></i></button>
         </div>
         <div class="col text-center">
           <button type="button" class="btn btn-outline-primary" (click)="onSaveClick()"><i class="fa fa-check"></i></button>
         </div>
       </div>
     </fieldset>
+    <div [ngClass] = "{'claseError': isError, 'claseOk': !isError} ">
+      <p>{{ message }}</p>      
+    </div>
   </form>
 </div>

@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
 @import '../generic-cards/flipcard/flipcard.component'
+
 * {
   margin: 0;
   padding: 0;
@@ -144,4 +145,30 @@ fieldset {
 
 :-ms-input-placeholder {
   color: #888;
+}
+
+:host ::ng-deep{
+  .sep{
+    &__error{
+      padding: 5px 0 25px;
+      @include breakpoint('large'){
+        height: 46px;
+      }
+    }
+  }
+}
+
+.ic-close::before {
+  content: "\e90c";
+  color:#f9706e
+}
+
+.claseError{
+  padding: 5px 0 25px;
+  color:#f9706e
+}
+
+.claseOk{
+  padding: 5px 0 25px;
+  color:#4CAF50
 }

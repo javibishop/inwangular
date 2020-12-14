@@ -51,13 +51,12 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    if (data != null && data.nombreUsuario != null && data.password != null) {
+                    if (data != null && data.status) {
                         this.router.navigate([this.returnUrl]);
                     } else {
-                        this.alertService.error('Usuario y/o contraseña inválida');
+                        this.alertService.error(data.message);
                         this.loading = false;
-                    }
-
+                    }                    
                 },
                 error => {
                     this.alertService.error(error);

@@ -13,44 +13,45 @@ namespace WebAPITest.Controllers
   [ApiController]
   public class KnowledgeController : ControllerBase
   {
-    private readonly UserService _userService;
+    private readonly KnowledgeService _knowledgeService;
 
-    public KnowledgeController(UserService userServices)
+    public KnowledgeController(KnowledgeService knowledgeService)
     {
-      this._userService = userServices;
+      this._knowledgeService = knowledgeService;
     }
 
-    // GET: api/Knowledge
+
     [HttpGet]
-    public IEnumerable<string> Get()
+    public IEnumerable<Conocimiento> Get()
     {
-      return new string[] { "value1", "value2" };
+      return _knowledgeService.Get();
+    }
+    [HttpGet("{id}")]
+    public Conocimiento GetConocimiento(string id)
+    {
+      return this._knowledgeService.Get(id);
     }
 
-    //[HttpGet("conocimiento/test/{​​​​id}​​​​")]
-    //public IEnumerable<ConocimientoUsuario> getConocimientos(string id)
-    //{
-    //  return _userService.getConocimientos(id);
-    //}
 
-    // POST: api/Knowledge
     [HttpPost]
-    public void Post([FromBody] string value)
+    public IActionResult Post([FromBody] Conocimiento value)
     {
+      Conocimiento newConocimiento = _knowledgeService.Create(value);
+      return Ok(newConocimiento);
     }
 
-    // PUT: api/Knowledge/5
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
+    public void Put(string id, [FromBody] Conocimiento value)
     {
+      _knowledgeService.Update(id, value);
     }
 
-    // DELETE: api/ApiWithActions/5
+
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public void Delete(string id)
     {
+      Conocimiento deletconocimiento = _knowledgeService.Get(id);
+      _knowledgeService.Remove(deletconocimiento);
     }
-
-
   }
 }

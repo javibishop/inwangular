@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 namespace WebAPITest.Models
 {
   
-  public class UserDatabaseSettings : IUserDatabaseSettings
-  {
-    public string UserCollectionName { get; set; }
+  public class DatabaseSettings : IDatabaseSettings
+  {    
     public string ConnectionString { get; set; }
     public string DatabaseName { get; set; }
   } 
 
-  public interface IUserDatabaseSettings
-  {
-    string UserCollectionName { get; set; }
+  public interface IDatabaseSettings
+  {   
     string ConnectionString { get; set; }
     string DatabaseName { get; set; }
   }

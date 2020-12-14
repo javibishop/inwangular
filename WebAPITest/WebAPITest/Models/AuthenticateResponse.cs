@@ -12,6 +12,8 @@ namespace WebAPITest.Models
     public string Apellido { get; set; }
     public string Username { get; set; }
     public string Token { get; set; }
+    public IEnumerable<ConocimientoUsuario> Conocimientos { get; set; }
+    public bool Administrador { get; set; }
 
     public AuthenticateResponse(Usuario user, string token)
     {
@@ -19,6 +21,8 @@ namespace WebAPITest.Models
       Nombre = user.Nombre;
       Apellido = user.Apellido;
       Username = user.nombreUsuario;
+      Conocimientos = user.Conocimientos;
+      Administrador = user.Administrador;
       Token = token;      
     }    
   }

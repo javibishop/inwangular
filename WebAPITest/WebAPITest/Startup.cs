@@ -25,11 +25,12 @@ namespace WebAPITest
     public void ConfigureServices(IServiceCollection services)
     {
       // requires using Microsoft.Extensions.Options
-      services.Configure<UserDatabaseSettings>(
-          Configuration.GetSection(nameof(UserDatabaseSettings)));
+      services.Configure<DatabaseSettings>(
+          Configuration.GetSection(nameof(DatabaseSettings)));
 
-      services.AddSingleton<IUserDatabaseSettings>(sp => sp.GetRequiredService<IOptions<UserDatabaseSettings>>().Value);
+      services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
       services.AddSingleton<UserService>();
+      services.AddSingleton<KnowledgeService>();
       // configure strongly typed settings object
       services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
       services.AddCors();
