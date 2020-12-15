@@ -33,10 +33,10 @@ export class AuthenticationService {
         return this.http.post<any>(this.url + `/authenticate`, { nombreUsuario, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
-                if (user && user.nombreUsuario && user.password) {
+                if (user && user.status) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    this.stateUserService.currentUserSubject.next(user);
+                    localStorage.setItem('currentUser', JSON.stringify(user.data));
+                    this.stateUserService.currentUserSubject.next(user.data);
                 }
 
                 return user;

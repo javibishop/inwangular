@@ -1,7 +1,6 @@
 <h5 *ngIf="knowledges == null || knowledges.length == 0">El usuario no posee conocimientos</h5>
-
 <div class="gl__wrapper ">
-  <div class="card" *ngIf="user && !user.administrador">
+  <div class="card" *ngIf="user && !user.administrador && getTecnologies().length > 0">
     <div class="card__flip" [ngClass]="{'card__flip--flipped': isNewFlipped}">
       <a class="card__add card__add__first" (click)="flipCard()" *ngIf="!isFlipped">
         <h3 class="card__title">Agregar Conocimiento</h3>
@@ -14,8 +13,9 @@
             <div class="card__data__actions">
               <p class="card__data__actions__title">Tecnología</p>
               <div class="card__data__actions__wrapper">
-                <select name="tecnologias" (change)="onChangeTecnologia($event.target.value)">
-                  <option [value]="item.description" *ngFor="let item of tecnologias">{{item.description}}</option>
+                <select name="tecnologias" (change)="onChangeTecnologia($event.target.value)">                  
+                  <option [value]="undefined" disabled hidden>Seleccione un conocimiento...</option>
+                  <option [value]="item.nombre" *ngFor="let item of getTecnologies()">{{item.nombre}}</option>
                 </select>
               </div>
             </div>
@@ -23,7 +23,7 @@
             <div class="card__data__actions">
               <p class="card__data__actions__title">Nivel</p>
               <div class="card__data__actions__wrapper">
-                <app-rating [rating]='0' [itemId]='1' (ratingClick)='ratingAddClick($event)' [readOnly]="user.administrador"></app-rating>
+                <app-rating [rating]='0' [itemId]='idNewCard' (ratingClick)='ratingAddClick($event)' [readOnly]="user.administrador"></app-rating>
               </div>
             </div>
   

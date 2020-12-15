@@ -7,3 +7,7 @@ https://geeks.ms/jorge/2020/06/01/anadir-swagger-a-una-web-api-con-asp-net-core-
 Si da error, es ver en la consola que dice que error esta dando.
 
 https://www.youtube.com/watch?v=h85_lFn8T3s
+
+
+Implementacion JWS
+https://jasonwatmore.com/post/2019/10/11/aspnet-core-3-jwt-authentication-tutorial-with-example-api

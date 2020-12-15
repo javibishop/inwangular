@@ -53,10 +53,19 @@ namespace WebAPITest.Controllers
 
     // PUT: api/User/5
     [HttpPut("{id}")]
-    public void Put(string id, [FromBody] Usuario value)
+    public IActionResult Put(string id, [FromBody] Usuario value)
     {
-      _userService.Update(id, value);
-    }     
+      try
+      {
+        _userService.Update(id, value);
+        
+        return Ok( new { StatusCode = true });
+      }
+      catch (System.Exception)
+      {
+        return BadRequest( new { StatusCode = false, message = "Error al guardar el Perfil" });
+      }
+    }
 
     // DELETE: api/ApiWithActions/5
     [HttpDelete("{id}")]
@@ -66,10 +75,21 @@ namespace WebAPITest.Controllers
       _userService.Remove(deletuser);
     }
 
-    [HttpPost ("authenticate")]
-    public Usuario Authentication([FromBody] DataAuthenticate objUser)
+    /// <summary>
+    /// Con este metodo vamos a autenticar al usuario 
+    /// </summary>
+    /// <param name="objUser">Objeto usuario</param>
+    /// <returns></returns>
+    [HttpPost("authenticate")]
+    public IActionResult Authentication([FromBody] DataAuthenticate objUser)
     {
-      return _userService.Authentication(objUser.nombreUsuario, objUser.password);
+      var response = _userService.Authentication(objUser.nombreUsuario, objUser.password);
+      if (response == null)
+      {
+        return Ok(new { status = false, message = "Usuario or Password Incorrecto" });
+      }
+      return Ok(new { status = true, data = response, message = "Usuario Valido" });
+      //return _userService.Authentication(objUser.nombreUsuario, objUser.password);
     }
 
     // PUT: api/User/5
@@ -79,7 +99,7 @@ namespace WebAPITest.Controllers
     {
       Usuario user = this._userService.Get(id);
 
-      if(user.Conocimientos == null)
+      if (user.Conocimientos == null)
       {
         user.Conocimientos = new List<ConocimientoUsuario>() as IEnumerable<ConocimientoUsuario>;
       }
@@ -87,13 +107,13 @@ namespace WebAPITest.Controllers
       _userService.Update(id, user);
     }
 
-   [Route("addKnowledge/{id}")]
+    [Route("addKnowledge/{id}")]
     [HttpPut]
     public void Put(string id, [FromBody] ConocimientoUsuario conocimiento)
     {
       Usuario user = this._userService.Get(id);
 
-      if(user.Conocimientos == null)
+      if (user.Conocimientos == null)
       {
         user.Conocimientos = new List<ConocimientoUsuario>() as IEnumerable<ConocimientoUsuario>;
       }
@@ -108,7 +128,7 @@ namespace WebAPITest.Controllers
     {
       Usuario user = this._userService.Get(id);
 
-      var aux = user.Conocimientos.Where<ConocimientoUsuario>( x => x.Conocimiento.Nombre != conocimiento.Conocimiento.Nombre).ToList();
+      var aux = user.Conocimientos.Where<ConocimientoUsuario>(x => x.Conocimiento.Nombre != conocimiento.Conocimiento.Nombre).ToList();
       user.Conocimientos = aux as IEnumerable<ConocimientoUsuario>;
       _userService.Update(id, user);
     }

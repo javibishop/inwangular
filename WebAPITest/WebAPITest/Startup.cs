@@ -8,11 +8,7 @@ using WebAPITest.Models;
 using WebAPITest.Services;
 using Microsoft.OpenApi.Models;
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
-using Newtonsoft.Json;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Diagnostics;
+using WebAPITest.Helpers;
 
 namespace WebAPITest
 {
@@ -29,11 +25,14 @@ namespace WebAPITest
     public void ConfigureServices(IServiceCollection services)
     {
       // requires using Microsoft.Extensions.Options
-      services.Configure<UserDatabaseSettings>(
-          Configuration.GetSection(nameof(UserDatabaseSettings)));
+      services.Configure<DatabaseSettings>(
+          Configuration.GetSection(nameof(DatabaseSettings)));
 
-      services.AddSingleton<IUserDatabaseSettings>(sp => sp.GetRequiredService<IOptions<UserDatabaseSettings>>().Value);
+      services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
       services.AddSingleton<UserService>();
+      services.AddSingleton<KnowledgeService>();
+      // configure strongly typed settings object
+      services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
       services.AddCors();
       services.AddControllers();
 
@@ -85,7 +84,8 @@ namespace WebAPITest
     }
 
       //app.UseHttpsRedirection();
-
+      // custom jwt auth middleware
+      app.UseMiddleware<JwtMiddleware>();
       app.UseSwagger();
       app.UseSwaggerUI(c =>
       {
