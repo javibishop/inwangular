@@ -19,6 +19,8 @@ import { GenericCardsComponent } from './generic-cards/generic-cards.component';
 import { FlipCardComponent } from './generic-cards/flipcard/flipcard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StarRatingComponent } from './_components/star-rating/star-rating.component';
+import { ChartsModule } from 'ng2-charts';
+import { ChartKnowledgeComponent } from './_components/chart-knowledge/chart-knowledge.component';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { StarRatingComponent } from './_components/star-rating/star-rating.compo
         ReactiveFormsModule,
         FormsModule,
         HttpClientModule,
-        routing
+        routing,
+        ChartsModule
     ],
     declarations: [
         AppComponent,
@@ -39,7 +42,8 @@ import { StarRatingComponent } from './_components/star-rating/star-rating.compo
         GenericCardsComponent,
         FlipCardComponent,
         ProfileComponent,
-        StarRatingComponent
+        StarRatingComponent,
+        ChartKnowledgeComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
