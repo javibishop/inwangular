@@ -172,3 +172,7 @@ fieldset {
   padding: 5px 0 25px;
   color:#4CAF50
 }
+
+.background{
+  background-image: url("../../../../src/assets/users.png");
+}

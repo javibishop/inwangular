@@ -12,9 +12,11 @@ namespace WebAPITest.Models
 
   public enum Niveles
   {
-    inicial,
+    inicial = 1,
+    satisfactorio,
     intermedio,
-    avanzado
+    avanzado,
+    experto
   }
 
 }

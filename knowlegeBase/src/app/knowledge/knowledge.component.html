@@ -1,6 +1,6 @@
 
 <h1 *ngIf="user != null">Conocimientos de {{ user.nombre }}</h1>
-<div>
+<div class="background">
   <app-generic-cards 
     [knowledgesList]="knowledges" 
     (changeKnowEmitter)="changeKnow($event)"

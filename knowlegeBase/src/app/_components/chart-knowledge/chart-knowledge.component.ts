@@ -45,7 +45,11 @@ export class ChartKnowledgeComponent implements OnInit, OnDestroy {
     });
 
     data.push(5);
-    this.barChartData.push({ data: data, label: "Nivel" });
+    this.barChartData.push({ data: data, label: "Nivel", type: 'bar', 
+                              options: { tension:0.0, bezierCurve:false },
+                              borderWidth: 1,
+                              tension:0.25,
+                              backgroundColor:['rgba(255, 99, 132, 0.2)','rgba(255, 99, 132, 0.2)','rgba(255, 99, 132, 0.2)','rgba(255, 99, 132, 0.2)'],borderColor:['rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)'], });
   }
 
   public chartClicked(e: any): void {
