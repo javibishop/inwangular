@@ -1,31 +1,26 @@
 <script src="../../../../node_modules/chart.js/chart"></script>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-        </div>
+  <div class="row">
+    <div class="col-sm-12">
     </div>
-    <div class="row content">
-        <div class="col-sm-2" id="divespacio">
-          </div>
-      <div class="col-lg-10">
-      
-                <canvas baseChart
-                        [datasets]="barChartData"
-                        [labels]="barChartLabels"
-                        options="{
+  </div>
+  <div class="row content">
+    <div class="col-lg-12" *ngIf="barChartData.length > 0">
+
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" options="{
                             scales: {
                                 yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
+                                    ticks: {                                        
+                                        min: 1,
+                                        max: 6,
+                                        stepSize: 1,                                        
                                     }
                                 }]
-                            }"
-                        [legend]="barChartLegend"
-                        [chartType]="barChartType"
-                        (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)"></canvas>
-              
-      </div>
+                            }" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+      </canvas>
+
     </div>
+  </div>
 </div>

@@ -11,11 +11,13 @@
 <body>
 
     <h1>Hola {{currentUser.apellido}}, {{currentUser.nombre}}!</h1>
+    
     <div class="limiter" *ngIf="currentUser.administrador && users">
         <div class="container-table100">
             <div class="wrap-table100">
                 <h3 style="padding-bottom:10px">Usuarios registrados:</h3>
-                <input class="form-control" id="inpFiler" type="text" placeholder="Search.." (keyup)="filter($event.target.value)">
+                <input class="form-control" id="inpFiler" type="text" placeholder="Search.."
+                    (keyup)="filter($event.target.value)">
                 <div class="table100 ver1 m-b-25">
                     <table data-vertable="ver1" id="usersTable">
                         <thead>
@@ -58,7 +60,11 @@
         </div>
     </div>
 
-    <app-chart-knowledge></app-chart-knowledge>
+    
+    <div *ngIf="!currentUser.administrador" style="padding-top: 50px;">        
+        <h2 class="tituloConocimiento">Tus conocimientos al dia de la fecha son...</h2>
+        <app-chart-knowledge></app-chart-knowledge>
+    </div>
 
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
