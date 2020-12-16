@@ -1,4 +1,4 @@
-<h5 *ngIf="knowledges == null || knowledges.length == 0">El usuario no posee conocimientos</h5>
+<h5 *ngIf="user.administrador && (knowledges == null || knowledges.length == 0)">El usuario no posee conocimientos</h5>
 <div class="gl__wrapper ">
   <div class="card" *ngIf="user && !user.administrador && getTecnologies().length > 0">
     <div class="card__flip" [ngClass]="{'card__flip--flipped': isNewFlipped}">

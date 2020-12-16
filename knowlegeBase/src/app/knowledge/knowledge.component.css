@@ -1,6 +1,7 @@
 .background{
-  background-image: url("../../../../src/assets/lines.jpg");
-  background-position: center;
+  background-image: url("../../../../src/assets/0101.jpg");
+  border: 2px solid black;
+  padding: 25px;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-size: auto;
 }

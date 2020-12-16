@@ -1,4 +1,4 @@
-import {Input, Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Input, Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { KnowledgeService } from "src/app/service/knowledge.service";
 import { UserService } from "src/app/service/user.service";
 import { ConocimientoUsuario } from "src/app/_models/ConocimientoUsuario";
@@ -27,8 +27,8 @@ export class FlipCardComponent implements OnInit {
 
   tecnologias = [];
 
-  constructor(private userService: UserService, 
-              private knowledgeService: KnowledgeService) { }
+  constructor(private userService: UserService,
+    private knowledgeService: KnowledgeService) { }
 
   ngOnInit() {
     if (this.knowledges !== undefined && this.knowledges !== null) {
@@ -58,8 +58,8 @@ export class FlipCardComponent implements OnInit {
         if (e >= 0) {
           this.knowledges[e] = this.currentKnow;
         } else {
-        this.currentKnow.flipped = false;
-        this.currentKnow.id = gen.next().value;
+          this.currentKnow.flipped = false;
+          this.currentKnow.id = gen.next().value;
           if (this.knowledges !== undefined && this.knowledges !== null) {
             this.knowledges = [...this.knowledges, this.currentKnow];
           } else {
@@ -138,14 +138,19 @@ export class FlipCardComponent implements OnInit {
 
     let tecnology: any[] = [];
 
-    this.tecnologias.forEach(tecnologia=>{              
-      if (this.knowledges.find(x=> x.conocimiento.nombre == tecnologia.nombre) === undefined) {
-        if (tecnologia.nombre !== '') {
-          tecnology.push(tecnologia);
+    if (this.knowledges && this.knowledges.length > 0) {
+      this.tecnologias.forEach(tecnologia => {
+        if (this.knowledges.find(x => x.conocimiento.nombre == tecnologia.nombre) === undefined) {
+          if (tecnologia.nombre !== '') {
+            tecnology.push(tecnologia);
+          }
         }
-      }        
-    })
-      
+      })
+    }
+    else {
+      tecnology = this.tecnologias;
+    }
+
     return tecnology;
   }
 }

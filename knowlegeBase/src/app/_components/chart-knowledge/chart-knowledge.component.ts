@@ -45,6 +45,7 @@ export class ChartKnowledgeComponent implements OnInit, OnDestroy {
     });
 
     data.push(5);
+    data.push(0);
     this.barChartData.push({ data: data, label: "Nivel", type: 'bar', 
                               options: { tension:0.0, bezierCurve:false },
                               borderWidth: 1,

@@ -47,6 +47,12 @@ namespace WebAPITest.Controllers
     [HttpPost]
     public IActionResult Post([FromBody] Usuario value)
     {
+      bool exists = _userService.Get().Any<Usuario>(x => x.nombreUsuario == value.nombreUsuario);
+      if (exists)
+      {
+        //return StatusCode(409);
+        return Conflict(new {message = "El usuario ya esta registrado"});
+      }
       Usuario newUser = _userService.Create(value);
       return Ok(newUser);
     }
@@ -58,12 +64,12 @@ namespace WebAPITest.Controllers
       try
       {
         _userService.Update(id, value);
-        
-        return Ok( new { StatusCode = true });
+
+        return Ok(new { StatusCode = true });
       }
       catch (System.Exception)
       {
-        return BadRequest( new { StatusCode = false, message = "Error al guardar el Perfil" });
+        return BadRequest(new { StatusCode = false, message = "Error al guardar el Perfil" });
       }
     }
 
