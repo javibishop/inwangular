@@ -8,6 +8,7 @@
 # dependencies
 /node_modules
 /knowlegeBase/node_modules
+/knowlegeBase/dist
 
 # IDEs and editors
 /.idea
