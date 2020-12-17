@@ -3,11 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../_models';
 import {ConocimientoUsuario} from '../_models/ConocimientoUsuario';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private url = 'http://localhost:60339/api/user';
+  private url = `http://localhost:${environment.PortApiNetCore}/api/user`;
   // private httpOptions = {
   //     headers: new HttpHeaders({
   //       'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -18,7 +19,7 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-    getAll() {
+    getAll() {      
         return this.http.get<User[]>(this.url);
     }
 

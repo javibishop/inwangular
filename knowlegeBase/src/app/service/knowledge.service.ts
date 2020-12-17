@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Conocimiento } from '../_models/conocimiento';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({ providedIn: 'root' })
-export class KnowledgeService {
-  private url = 'http://localhost:60339/api/Knowledge';
+export class KnowledgeService {  
+  private url = `http://localhost:${environment.PortApiNetCore}/api/Knowledge`;
   // private httpOptions = {
   //     headers: new HttpHeaders({
   //       'Access-Control-Allow-Origin': 'http://localhost:4200',
